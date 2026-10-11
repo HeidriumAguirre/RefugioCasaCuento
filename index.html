@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Refugio CasaCuento - Hotel Boutique y Hostal Mágico en Mantagua, Concón, V Región, Chile" />
+<meta name="theme-color" content="#1A1A2E" />
+<title>Refugio CasaCuento · Hotel Boutique · Concón / Mantagua</title>
+<link rel="icon" type="image/png" href="assets/logo-refugio-casacuento-es.png" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(180deg, #1A1A2E 0%, #2D3D2E 100%);
+    color: #FFF8E7;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .logo-img {
+    max-width: 400px; width: 100%; height: auto;
+    margin-bottom: 32px;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+  }
+  h1 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: #E8C77A;
+    font-weight: 400;
+    margin-bottom: 16px;
+    letter-spacing: 0.1em;
+  }
+  p {
+    font-size: 1.1rem;
+    color: rgba(255, 248, 231, 0.8);
+    max-width: 600px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .lang-badge {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 8px 16px;
+    background: rgba(201, 161, 74, 0.15);
+    border: 1px solid rgba(201, 161, 74, 0.4);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: #E8C77A;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .phase-banner {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(200, 75, 45, 0.95);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<img src="assets/logo-refugio-casacuento-es.png"
+     alt="Refugio CasaCuento Hostal Mágico"
+     class="logo-img"
+     id="siteLogo" />
+
+<h1>Refugio CasaCuento</h1>
+<p>Donde la naturaleza, el confort y la magia se encuentran en Mantagua.</p>
+
+<span class="lang-badge" id="langBadge">Idioma detectado: es-CL → Logo en español</span>
+
+<div class="phase-banner">Fase 1 — Prueba de logos</div>
+
+<script>
+  (function() {
+    // Detectar idioma del navegador
+    const lang = (navigator.language || 'es').toLowerCase();
+    const isSpanish = lang.startsWith('es');
+    const logo = document.getElementById('siteLogo');
+    const badge = document.getElementById('langBadge');
+
+    if (!isSpanish) {
+      logo.src = 'assets/logo-magic-house-en.png';
+      logo.alt = 'Magic House Hotel Boutique - Refugio';
+      document.documentElement.lang = 'en';
+      badge.textContent = 'Idioma detectado: ' + lang + ' → Logo en inglés';
+    } else {
+      badge.textContent = 'Idioma detectado: ' + lang + ' → Logo en español';
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Windows
+$RECYCLE.BIN/
+
+# Vercel
+.vercel/
+
+# IDEs / Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node
+node_modules/
+package-lock.json
+
+# Archivos temporales
+*.tmp
+*.bak
+*.orig
+.env
+.env.local
+
+# Material que no va al repo (se guarda local en otra carpeta)
+Material-para-redes/
