@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Galería completa de Refugio CasaCuento - Hotel boutique en Mantagua, Concón, V Región, Chile." />
+<meta name="theme-color" content="#2E4A3E" />
+<title>Galería · Refugio CasaCuento</title>
+<link rel="icon" type="image/png" href="assets/logo-refugio-casacuento-es.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/includes.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#inicio" class="skip-link">Saltar al contenido</a>
+<div data-include="partials/header.html"></div>
+
+<main id="inicio">
+  <section class="alojamiento-hero">
+    <span class="section-eyebrow">✦ Galería ✦</span>
+    <h1>Galería Encantada</h1>
+    <p>Un recorrido visual por cada rincón de CasaCuento.</p>
+  </section>
+
+  <section class="section galeria-section" style="padding-top: 60px;">
+    <div class="container">
+      <div class="galeria-grid" id="galeriaGrid">
+        <!-- Las fotos se cargan automáticamente desde JS -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-include="partials/footer.html"></div>
+<div data-include="partials/chatbot.html"></div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<script>
+(function() {
+  // Genera la galería desde la lista de archivos en /fotos-web/galeria/
+  // Para hacerlo dinámico necesitaríamos un listado del servidor, pero Vercel
+  // no expone listados. Mantenemos una lista estática sincronizada con los assets.
+  const fotos = [
+    'galeria-01', 'galeria-02', 'galeria-03', 'galeria-04',
+    'galeria-05', 'galeria-06', 'galeria-07', 'galeria-08',
+    'galeria-09', 'galeria-10', 'galeria-11'
+  ];
+  const captions = [
+    'Piscina y áreas verdes', 'Habitación boutique', 'Loft moderno',
+    'Suite con vista', 'Cabaña rodeada de bosque', 'Naturaleza nativa',
+    'Jardín interior', 'Atardecer', 'Detalle arquitectónico', 'Cocina equipada', 'Terraza'
+  ];
+  const grid = document.getElementById('galeriaGrid');
+  if (grid) {
+    fotos.forEach((f, i) => {
+      const fig = document.createElement('figure');
+      fig.className = 'galeria-item';
+      fig.dataset.caption = captions[i] || f;
+      fig.innerHTML = `
+        <img src="fotos-web/galeria/${f}.webp" alt="${captions[i] || f}" loading="lazy" />
+        <div class="galeria-overlay"><figcaption class="galeria-caption">${captions[i] || f}</figcaption></div>
+      `;
+      grid.appendChild(fig);
+    });
+  }
+})();
+</script>
+</body>
+</html>

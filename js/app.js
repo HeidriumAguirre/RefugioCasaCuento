@@ -1,0 +1,512 @@
+(function() {
+  'use strict';
+
+  const WHATSAPP_NUMBER = '56991924089';
+  const WHATSAPP_BASE = 'https://wa.me/' + WHATSAPP_NUMBER;
+  const BOOKING_URL = 'https://www.booking.com/hotel/cl/casa-cuento.es.html';
+  const EXPEDIA_URL = 'https://www.expedia.com/es/Vina-Del-Mar-Hoteles-Casa-Cuento.h16264146.Informacion-Hotel';
+  const EMAIL_TO = 'refugiocasacuento@gmail.com';
+
+  // Año dinámico footer
+  const setYear = () => {
+    const yearEl = document.getElementById('footerYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  };
+
+  // ============================================
+  // LOGO MULTI-IDIOMA
+  // ============================================
+  const initMultiLangLogo = () => {
+    const lang = (navigator.language || 'es').toLowerCase();
+    const isSpanish = lang.startsWith('es');
+    const logoEs = 'assets/logo-refugio-casacuento-es.png';
+    const logoEn = 'assets/logo-magic-house-en.png';
+    const altEs = 'Refugio CasaCuento Hostal Mágico';
+    const altEn = 'Magic House Hotel Boutique - Refugio';
+
+    const headerLogo = document.getElementById('headerLogo');
+    const footerLogo = document.getElementById('footerLogo');
+
+    if (!isSpanish) {
+      if (headerLogo) { headerLogo.src = logoEn; headerLogo.alt = altEn; }
+      if (footerLogo) { footerLogo.src = logoEn; footerLogo.alt = altEn; }
+    } else {
+      if (headerLogo) { headerLogo.src = logoEs; headerLogo.alt = altEs; }
+      if (footerLogo) { footerLogo.src = logoEs; footerLogo.alt = altEs; }
+    }
+  };
+
+  // ============================================
+  // HEADER: scroll, dropdown, mobile menu
+  // ============================================
+  const initHeader = () => {
+    const header = document.getElementById('siteHeader');
+    const navToggle = document.getElementById('navToggle');
+
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      }, { passive: true });
+    }
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('menu-open');
+        navToggle.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Dropdown toggle
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = btn.parentElement;
+        const isOpen = parent.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
+        // cerrar otros
+        document.querySelectorAll('.nav-dropdown.open').forEach(other => {
+          if (other !== parent) {
+            other.classList.remove('open');
+            const otherBtn = other.querySelector('.nav-dropdown-toggle');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+
+    // Cerrar dropdown al hacer click fuera
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+          d.classList.remove('open');
+          const btn = d.querySelector('.nav-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Cerrar menú móvil al click en link
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          header.classList.remove('menu-open');
+          if (navToggle) {
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+  };
+
+  // ============================================
+  // FONT SIZE
+  // ============================================
+  const initFontSize = () => {
+    const STORAGE_KEY = 'casacuento-font-size';
+    const buttons = document.querySelectorAll('.font-btn');
+    if (!buttons.length) return;
+
+    const applySize = (size) => {
+      const scale = size === 'small' ? 0.875 : size === 'large' ? 1.125 : 1;
+      document.documentElement.style.setProperty('--font-scale', scale);
+      document.body.style.fontSize = (16 * scale) + 'px';
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.size === size));
+      try { localStorage.setItem(STORAGE_KEY, size); } catch (e) {}
+    };
+
+    // Restaurar preferencia
+    let saved = 'normal';
+    try { saved = localStorage.getItem(STORAGE_KEY) || 'normal'; } catch (e) {}
+    applySize(saved);
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => applySize(btn.dataset.size));
+    });
+  };
+
+  // ============================================
+  // GOOGLE TRANSLATE (widget oficial, disfrazado)
+  // ============================================
+  const initTranslate = () => {
+    if (document.getElementById('google_translate_element')) return;
+
+    // Crear contenedor oculto
+    const container = document.createElement('div');
+    container.id = 'google_translate_element';
+    container.style.position = 'absolute';
+    container.style.left = '-9999px';
+    container.style.top = '-9999px';
+    document.body.appendChild(container);
+
+    // Inicializar la API de Google Translate
+    window.googleTranslateElementInit = function() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'en,pt,de,fr,it,zh,ja,ru,nl,ko,zh-CN,zh-TW,ar,hi,tr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    };
+
+    // Cargar el script de Google Translate
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+
+    // El botón del header abre el dropdown nativo de Google
+    const btn = document.querySelector('.translate-btn');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        // El widget de Google tiene un select oculto
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.focus();
+          // abrir el dropdown de Google
+          select.click();
+        } else {
+          // Si no está cargado todavía, intentar de nuevo
+          setTimeout(() => {
+            const s = document.querySelector('.goog-te-combo');
+            if (s) s.click();
+          }, 500);
+        }
+      });
+    }
+  };
+
+  // ============================================
+  // RESERVA: helper para abrir WhatsApp con datos
+  // ============================================
+  const openWhatsAppReserva = (opts) => {
+    const lines = [
+      `Hola CasaCuento, me interesa consultar disponibilidad.`,
+      ``,
+      `• Alojamiento: ${opts.alojamiento}`,
+      `• Fecha de entrada: ${opts.fechaEntrada}`,
+      `• Fecha de salida: ${opts.fechaSalida}`,
+      `• Personas: ${opts.personas}`,
+    ];
+    if (opts.cascada) lines.push(`• Cascada en piscina: Sí (+$${opts.cascadaPrecio || 90000} CLP)`);
+    lines.push('');
+    lines.push('Quedo atento a su confirmación. ¡Gracias!');
+
+    const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank');
+  };
+
+  // ============================================
+  // ALOJAMIENTOS: form inline → WhatsApp
+  // ============================================
+  const initAlojamientoForms = () => {
+    document.querySelectorAll('[data-alojamiento-form]').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const alojamiento = form.dataset.alojamiento || 'alojamiento';
+        const fechaEntrada = form.querySelector('[name="fechaEntrada"]').value;
+        const fechaSalida = form.querySelector('[name="fechaSalida"]').value;
+        const personas = form.querySelector('[name="personas"]').value;
+        const cascada = form.querySelector('[name="cascada"]')?.checked || false;
+
+        if (!fechaEntrada || !fechaSalida) {
+          alert('Por favor selecciona fecha de entrada y salida.');
+          return;
+        }
+
+        openWhatsAppReserva({
+          alojamiento,
+          fechaEntrada,
+          fechaSalida,
+          personas,
+          cascada,
+          cascadaPrecio: 90000
+        });
+      });
+    });
+  };
+
+  // ============================================
+  // CHATBOT
+  // ============================================
+  const responses = {
+    habitaciones: {
+      text: '🛏️ Nuestras habitaciones boutique combinan piedra y madera noble. Están equipadas con ropa de cama premium, calefacción y todo lo necesario para un descanso profundo.',
+      waText: 'Hola%20CasaCuento%2C%20me%20interesan%20las%20habitaciones'
+    },
+    piscina: {
+      text: '🏊 Nuestra piscina al aire libre está rodeada de áreas verdes y naturaleza. Un refugio perfecto para refrescar cuerpo y espíritu bajo el sol de la costa.',
+      waText: 'Hola%20CasaCuento%2C%20me%20interesa%20la%20piscina'
+    },
+    entorno: {
+      text: '🌲 CasaCuento está abrazada por el bosque nativo de Mantagua. Senderos, silencio, aire puro y la brisa del Pacífico a minutos de Concón.',
+      waText: 'Hola%20CasaCuento%2C%20quisiera%20conocer%20m%C3%A1s%20sobre%20el%20entorno'
+    },
+    ubicacion: {
+      text: '📍 Estamos en Mantagua, Concón, V Región de Chile. Aprox. 1 h 30 min desde Santiago por Ruta 5 Norte, a 15 min de Concón por la F-30.',
+      waText: 'Hola%20CasaCuento%2C%20quisiera%20m%C3%A1s%20detalles%20sobre%20la%20ubicaci%C3%B3n'
+    },
+    desayuno: {
+      text: '🍳 Cada mañana servimos un desayuno casero con productos frescos y locales: pan recién hecho, café de la zona, frutas y más. Una forma encantadora de empezar el día.',
+      waText: 'Hola%20CasaCuento%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20desayuno'
+    },
+    equipo: {
+      text: '💬 ¡Con mucho gusto! Te conecto directamente con nuestro equipo por WhatsApp para resolver todas tus dudas.',
+      waText: 'Hola%20CasaCuento%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n'
+    }
+  };
+
+  const escapeHTML = (str) => {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  };
+
+  const buildOptionsHTML = (actions) => {
+    return '<div class="chat-options">' + actions.map(a =>
+      `<button class="chat-option" data-action="${a.action}">${a.label}</button>`
+    ).join('') + '</div>';
+  };
+
+  const addBotMessage = (body, html = '') => {
+    const chatbotBody = document.getElementById('chatbotBody');
+    if (!chatbotBody) return;
+    const msg = document.createElement('div');
+    msg.className = 'chat-message bot';
+    msg.innerHTML = `<div class="chat-bubble">${escapeHTML(body)}</div>${html}`;
+    chatbotBody.appendChild(msg);
+    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    return msg;
+  };
+
+  const addUserMessage = (text) => {
+    const chatbotBody = document.getElementById('chatbotBody');
+    if (!chatbotBody) return;
+    const msg = document.createElement('div');
+    msg.className = 'chat-message user';
+    msg.innerHTML = `<div class="chat-bubble">${escapeHTML(text)}</div>`;
+    chatbotBody.appendChild(msg);
+    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+  };
+
+  const initChatbot = () => {
+    const chatbot = document.getElementById('chatbot');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotBody = document.getElementById('chatbotBody');
+    if (!chatbot || !chatbotToggle || !chatbotWindow || !chatbotClose || !chatbotBody) return;
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbotWindow.classList.toggle('active');
+    });
+    chatbotClose.addEventListener('click', () => {
+      chatbotWindow.classList.remove('active');
+    });
+
+    const welcomeActions = [
+      { action: 'habitaciones', label: '🛏️  Habitaciones' },
+      { action: 'piscina', label: '🏊  Piscina' },
+      { action: 'entorno', label: '🌲  El entorno' },
+      { action: 'ubicacion', label: '📍  Ubicación y cómo llegar' },
+      { action: 'desayuno', label: '🍳  Desayuno' },
+      { action: 'equipo', label: '💬  Hablar con el equipo' }
+    ];
+    addBotMessage('✨ ¡Saludos, viajero! Soy el Asistente Mágico de CasaCuento. ¿Qué quieres conocer?', buildOptionsHTML(welcomeActions));
+
+    chatbotBody.addEventListener('click', (e) => {
+      const btn = e.target.closest('.chat-option');
+      if (!btn) return;
+      const action = btn.dataset.action;
+      const resp = responses[action];
+      if (!resp) return;
+
+      const label = btn.textContent.trim();
+      addUserMessage(label);
+
+      const optionLists = chatbotBody.querySelectorAll('.chat-options');
+      optionLists.forEach(o => o.style.display = 'none');
+
+      setTimeout(() => {
+        if (action === 'equipo') {
+          const waLink = `${WHATSAPP_BASE}?text=${resp.waText}`;
+          const cta = `<div class="chat-options" style="margin-top:12px;">
+            <a class="chat-option" href="${waLink}" target="_blank" rel="noopener">💬 Abrir WhatsApp</a>
+          </div>`;
+          addBotMessage(resp.text, cta);
+        } else {
+          const cta = `<div class="chat-options" style="margin-top:12px;">
+            <a class="chat-option" href="${BOOKING_URL}" target="_blank" rel="noopener">📅 Reservar por Booking</a>
+            <a class="chat-option" href="${WHATSAPP_BASE}?text=${resp.waText}" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+            <button class="chat-option" data-action="reset">↩️  Ver el menú principal</button>
+          </div>`;
+          addBotMessage(resp.text, cta);
+        }
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+      }, 700);
+    });
+
+    chatbotBody.addEventListener('click', (e) => {
+      const reset = e.target.closest('[data-action="reset"]');
+      if (!reset) return;
+      const label = reset.textContent.trim();
+      addUserMessage(label);
+      const optionLists = chatbotBody.querySelectorAll('.chat-options');
+      optionLists.forEach(o => o.style.display = 'none');
+      setTimeout(() => {
+        addBotMessage('✨ ¿Qué más te gustaría saber de CasaCuento?', buildOptionsHTML(welcomeActions));
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+      }, 500);
+    });
+
+    // Mostrar el chatbot
+    document.body.classList.add('chatbot-ready');
+  };
+
+  // ============================================
+  // GALERÍA: thumbnails + lightbox
+  // ============================================
+  const initGalleries = () => {
+    // Thumbnails en páginas de alojamiento
+    document.querySelectorAll('.alojamiento-gallery').forEach(gallery => {
+      const main = gallery.querySelector('.alojamiento-gallery-main');
+      const thumbs = gallery.querySelectorAll('.alojamiento-thumb');
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const src = thumb.dataset.src || thumb.src;
+          if (main) main.src = src;
+          thumbs.forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+      });
+    });
+
+    // Lightbox de galería general
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    if (lightbox && lightboxImg && lightboxClose) {
+      document.querySelectorAll('.galeria-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          if (!img) return;
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || '';
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+    }
+  };
+
+  // ============================================
+  // MODALES DE ENCANTOS
+  // ============================================
+  const initEncantosModals = () => {
+    const overlay = document.getElementById('encantoModal');
+    if (!overlay) return;
+    const closeBtn = document.getElementById('encantoModalClose');
+    const titleEl = document.getElementById('encantoModalTitle');
+    const textEl = document.getElementById('encantoModalText');
+
+    document.querySelectorAll('[data-encanto]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = btn.dataset.encantoNombre || '';
+        const texto = btn.dataset.encantoTexto || '';
+        if (titleEl) titleEl.textContent = nombre;
+        if (textEl) textEl.textContent = texto;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const close = () => {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('active')) close(); });
+  };
+
+  // ============================================
+  // REVEAL ON SCROLL
+  // ============================================
+  const initReveal = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => obs.observe(el));
+  };
+
+  // ============================================
+  // SMOOTH SCROLL para anchors internos
+  // ============================================
+  const initSmoothScroll = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  };
+
+  // ============================================
+  // RESERVAR button → scroll a sección
+  // ============================================
+  const initReservarButton = () => {
+    document.querySelectorAll('[data-action="reservar"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const whatsappURL = `${WHATSAPP_BASE}?text=${encodeURIComponent('Hola CasaCuento, me gustaría reservar. ¿Pueden ayudarme con disponibilidad?')}`;
+        window.open(whatsappURL, '_blank');
+      });
+    });
+  };
+
+  // ============================================
+  // INICIALIZACIÓN
+  // ============================================
+  const ready = window.__includesReady || Promise.resolve();
+
+  ready.then(() => {
+    setYear();
+    initMultiLangLogo();
+    initHeader();
+    initFontSize();
+    initTranslate();
+    initAlojamientoForms();
+    initChatbot();
+    initGalleries();
+    initEncantosModals();
+    initReveal();
+    initSmoothScroll();
+    initReservarButton();
+  });
+})();

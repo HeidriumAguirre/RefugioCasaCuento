@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Eventos en Refugio CasaCuento - Matrimonios, cumpleaños y eventos corporativos en Mantagua, Concón." />
+<meta name="theme-color" content="#2E4A3E" />
+<title>Eventos · Refugio CasaCuento</title>
+<link rel="icon" type="image/png" href="assets/logo-refugio-casacuento-es.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/includes.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a href="#inicio" class="skip-link">Saltar al contenido</a>
+<div data-include="partials/header.html"></div>
+
+<main id="inicio">
+  <section class="eventos-section" style="padding: 140px 24px 60px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">✦ Eventos ✦</span>
+        <h1 class="section-title" id="eventosTitle">Tu evento, en un lugar de cuento</h1>
+        <p class="section-subtitle">Matrimonios, cumpleaños, eventos corporativos o reuniones familiares. CasaCuento se adapta a tu celebración.</p>
+      </div>
+
+      <div class="eventos-content reveal">
+        <div class="eventos-texto">
+          <p>El entorno natural, la piscina y los espacios comunes hacen de CasaCuento el lugar perfecto para eventos íntimos y memorables.</p>
+          <ul>
+            <li>Matrimonios al aire libre con vista al bosque</li>
+            <li>Cumpleaños familiares con piscina privada</li>
+            <li>Eventos corporativos y retiros de equipo</li>
+            <li>Celebraciones íntimas para grupos pequeños</li>
+            <li>Coordinación personalizada con el equipo del hotel</li>
+          </ul>
+          <div class="evento-cascada-box">
+            <strong>🌊 Opción cascada en piscina</strong>
+            <p>Activa la cascada de la piscina para tu evento y dale un toque único a la celebración.</p>
+            <p class="evento-cascada-precio">+ $90.000 CLP</p>
+          </div>
+        </div>
+
+        <div>
+          <form class="alojamiento-form" data-alojamiento-form data-alojamiento="evento">
+            <h3 class="alojamiento-form-title">Consultar disponibilidad para evento</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="evento-fecha">Fecha tentativa</label>
+                <input type="date" name="fechaEntrada" id="evento-fecha" required />
+              </div>
+              <div class="form-group">
+                <label for="evento-personas">N° de personas</label>
+                <input type="number" name="personas" id="evento-personas" min="1" placeholder="20" required />
+              </div>
+            </div>
+            <label class="form-group-checkbox">
+              <input type="checkbox" name="cascada" />
+              <span>Incluir cascada en piscina <span class="cascada-precio">(+ $90.000 CLP)</span></span>
+            </label>
+            <div class="alojamiento-form-acciones">
+              <button type="submit" class="btn btn-primary">Consultar por WhatsApp</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-include="partials/footer.html"></div>
+<div data-include="partials/chatbot.html"></div>
+</body>
+</html>

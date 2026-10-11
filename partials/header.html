@@ -1,0 +1,56 @@
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="logo logo-image" aria-label="Refugio CasaCuento - Inicio">
+        <img src="assets/logo-refugio-casacuento-es.png"
+             alt="Refugio CasaCuento"
+             class="logo-img"
+             id="headerLogo" />
+      </a>
+
+      <ul class="nav-list" id="navList">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="historia.html" class="nav-link">Historia</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Habitaciones y Tarifas
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-dropdown-menu">
+            <li><a href="habitaciones.html">Habitaciones</a></li>
+            <li><a href="lofts.html">Lofts</a></li>
+            <li><a href="suites.html">Suites</a></li>
+            <li><a href="cabanas.html">Cabañas</a></li>
+          </ul>
+        </li>
+        <li><a href="encantos.html" class="nav-link">Encantos</a></li>
+        <li><a href="eventos.html" class="nav-link">Eventos</a></li>
+        <li><a href="galeria.html" class="nav-link">Galería</a></li>
+        <li><a href="testimonios.html" class="nav-link">Testimonios</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <li><a href="ubicacion.html" class="nav-link">Ubicación</a></li>
+      </ul>
+
+      <div class="nav-tools">
+        <div class="font-size-control" role="group" aria-label="Tamaño del texto">
+          <button type="button" class="font-btn" data-size="small" aria-label="Texto pequeño">A-</button>
+          <button type="button" class="font-btn active" data-size="normal" aria-label="Texto normal">A</button>
+          <button type="button" class="font-btn" data-size="large" aria-label="Texto grande">A+</button>
+        </div>
+
+        <div class="translate-control" id="translateControl">
+          <button type="button" class="translate-btn" aria-label="Cambiar idioma" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </button>
+        </div>
+
+        <a href="#reservar" class="nav-btn nav-btn-primary" data-action="reservar">Reservar</a>
+        <a href="contacto.html" class="nav-btn nav-btn-secondary">Contactar</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>

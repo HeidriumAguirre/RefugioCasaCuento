@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Habitaciones boutique en Refugio CasaCuento - Paula y Unicornio. Suites íntimas con detalles en madera nativa en Mantagua, Concón." />
+<meta name="theme-color" content="#2E4A3E" />
+<title>Habitaciones · Refugio CasaCuento</title>
+
+<link rel="icon" type="image/png" href="assets/logo-refugio-casacuento-es.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/includes.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+
+<a href="#inicio" class="skip-link">Saltar al contenido</a>
+<div data-include="partials/header.html"></div>
+
+<main id="inicio">
+  <section class="alojamiento-hero">
+    <span class="section-eyebrow">✦ Habitaciones ✦</span>
+    <h1>Nuestras Habitaciones</h1>
+    <p>Dos suites íntimas con detalles en madera nativa, perfectas para parejas o escapadas románticas.</p>
+  </section>
+
+  <section class="section" style="padding-top: 60px;">
+    <div class="container" style="max-width: 1100px;">
+
+      <article class="alojamiento-card reveal">
+        <div class="alojamiento-card-grid">
+          <div class="alojamiento-gallery">
+            <img class="alojamiento-gallery-main" src="fotos-web/habitacion-paula/img-01.webp" alt="Habitación Paula" />
+            <div class="alojamiento-thumbs"></div>
+          </div>
+          <div class="alojamiento-body">
+            <span class="alojamiento-tipo">Habitación</span>
+            <h2 class="alojamiento-nombre">Paula</h2>
+            <p class="alojamiento-descripcion">Suite íntima con detalles en madera nativa, ideal para parejas. Iluminación cálida, ropa de cama premium y todo lo necesario para una estadía memorable.</p>
+            <div class="alojamiento-detalles">
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M22 4v16M2 8h20M2 16h20M6 12h12"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Camas</div>
+                <div class="alojamiento-detalle-valor">1 Queen</div>
+              </div>
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Capacidad</div>
+                <div class="alojamiento-detalle-valor">2 personas</div>
+              </div>
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Desde</div>
+                <div class="alojamiento-detalle-valor">$ XX.XXX / noche</div>
+              </div>
+            </div>
+
+            <div class="datos-bancarios-box">
+              <h4>💳 Datos para transferencia</h4>
+              <div class="datos-bancarios-dato"><strong>Nombre:</strong> <span>-</span></div>
+              <div class="datos-bancarios-dato"><strong>RUT:</strong> <span>-</span></div>
+              <div class="datos-bancarios-dato"><strong>Banco:</strong> <span>-</span></div>
+              <div class="datos-bancarios-dato"><strong>Tipo de cuenta:</strong> <span>-</span></div>
+              <div class="datos-bancarios-dato"><strong>N° de cuenta:</strong> <span>-</span></div>
+              <div class="datos-bancarios-dato"><strong>Email confirmación:</strong> <span>refugiocasacuento@gmail.com</span></div>
+              <p class="datos-bancarios-nota">Los datos definitivos se confirmarán con Alexis al momento de definir los precios.</p>
+            </div>
+
+            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="Habitación Paula">
+              <h3 class="alojamiento-form-title">Consultar disponibilidad</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="paula-entrada">Entrada</label>
+                  <input type="date" name="fechaEntrada" id="paula-entrada" required />
+                </div>
+                <div class="form-group">
+                  <label for="paula-salida">Salida</label>
+                  <input type="date" name="fechaSalida" id="paula-salida" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paula-personas">Personas</label>
+                <input type="number" name="personas" id="paula-personas" min="1" max="2" value="2" required />
+              </div>
+              <div class="alojamiento-form-acciones">
+                <button type="submit" class="btn btn-primary">Consultar por WhatsApp</button>
+                <a href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener" class="btn btn-bosque">Ver en Booking</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+
+      <article class="alojamiento-card reveal">
+        <div class="alojamiento-card-grid">
+          <div class="alojamiento-gallery">
+            <img class="alojamiento-gallery-main" src="fotos-web/habitacion-unicornio/img-01.webp" alt="Habitación Unicornio" />
+            <div class="alojamiento-thumbs">
+              <img class="alojamiento-thumb active" src="fotos-web/habitacion-unicornio/img-01.webp" data-src="fotos-web/habitacion-unicornio/img-01.webp" alt="Habitación Unicornio 1" />
+              <img class="alojamiento-thumb" src="fotos-web/habitacion-unicornio/img-02.webp" data-src="fotos-web/habitacion-unicornio/img-02.webp" alt="Habitación Unicornio 2" />
+            </div>
+          </div>
+          <div class="alojamiento-body">
+            <span class="alojamiento-tipo">Habitación</span>
+            <h2 class="alojamiento-nombre">Unicornio</h2>
+            <p class="alojamiento-descripcion">Habitación especial con detalles únicos que inspiran su nombre. Madera noble, textiles cálidos y un ambiente que invita a soñar.</p>
+            <div class="alojamiento-detalles">
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M22 4v16M2 8h20M2 16h20M6 12h12"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Camas</div>
+                <div class="alojamiento-detalle-valor">1 Queen</div>
+              </div>
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Capacidad</div>
+                <div class="alojamiento-detalle-valor">2 personas</div>
+              </div>
+              <div class="alojamiento-detalle">
+                <div class="alojamiento-detalle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <div class="alojamiento-detalle-label">Desde</div>
+                <div class="alojamiento-detalle-valor">$ XX.XXX / noche</div>
+              </div>
+            </div>
+
+            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="Habitación Unicornio">
+              <h3 class="alojamiento-form-title">Consultar disponibilidad</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="unicornio-entrada">Entrada</label>
+                  <input type="date" name="fechaEntrada" id="unicornio-entrada" required />
+                </div>
+                <div class="form-group">
+                  <label for="unicornio-salida">Salida</label>
+                  <input type="date" name="fechaSalida" id="unicornio-salida" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="unicornio-personas">Personas</label>
+                <input type="number" name="personas" id="unicornio-personas" min="1" max="2" value="2" required />
+              </div>
+              <div class="alojamiento-form-acciones">
+                <button type="submit" class="btn btn-primary">Consultar por WhatsApp</button>
+                <a href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener" class="btn btn-bosque">Ver en Booking</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<div data-include="partials/footer.html"></div>
+<div data-include="partials/chatbot.html"></div>
+
+</body>
+</html>
