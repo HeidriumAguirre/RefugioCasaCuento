@@ -388,6 +388,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
   letter-spacing: 0.05em;
 }
 .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+.footer-col-navegacion ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 8px;
+}
 .footer-col a {
   color: rgba(245, 240, 232, 0.7);
   font-size: 0.9375rem;
