@@ -50,7 +50,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-body);
-  font-size: calc(16px * var(--font-scale));
+  font-size: calc(15px * var(--font-scale));
   line-height: 1.6;
   color: var(--color-texto);
   background-color: var(--color-crema);
@@ -343,7 +343,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
 .site-footer {
   background: var(--color-bosque-dark);
   color: var(--color-arena);
-  padding: 64px 24px 24px;
+  padding: 40px 24px 20px;
 }
 .footer-grid {
   display: grid;
