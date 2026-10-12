@@ -183,8 +183,6 @@
       });
     });
   };
-    }
-  };
 
   // ============================================
   // RESERVA: helper para abrir WhatsApp con datos
