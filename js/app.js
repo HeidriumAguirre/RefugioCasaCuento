@@ -399,10 +399,10 @@
         { icon: '\u{2600}\u{FE0F}', title: 'Todo el ano', text: 'Disponible en verano e invierno, temperada y apta para distintas edades.' }
       ],
       gallery: [
-        'fotos-web/galeria/galeria-01.webp',
-        'fotos-web/galeria/galeria-07.webp',
-        'fotos-web/galeria/galeria-06.webp',
-        'fotos-web/galeria/galeria-08.webp'
+        'fotos-web/galeria/piscina-01.webp',
+        'fotos-web/galeria/piscina-02.webp',
+        'fotos-web/galeria/piscina-cascada-01.webp',
+        'fotos-web/galeria/piscina-cascada-02.webp'
       ],
       whatsappText: 'Hola CasaCuento, me interesa la piscina'
     },
@@ -417,9 +417,10 @@
         { icon: '\u{1F36F}', title: 'Mermeladas y frutas', text: 'Mermeladas caseras y frutas de temporada de la zona.' }
       ],
       gallery: [
-        'fotos-web/galeria/galeria-10.webp',
-        'fotos-web/galeria/galeria-11.webp',
-        'fotos-web/galeria/galeria-09.webp'
+        'fotos-web/galeria/desayuno.webp',
+        'fotos-web/galeria/cocina-01.webp',
+        'fotos-web/galeria/cocina-02.webp',
+        'fotos-web/galeria/cocina-03.webp'
       ],
       whatsappText: 'Hola CasaCuento, me interesa el desayuno'
     },
@@ -434,9 +435,10 @@
         { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pajaros y fauna nativa para observar desde los miradores del hotel.' }
       ],
       gallery: [
-        'fotos-web/galeria/galeria-06.webp',
-        'fotos-web/galeria/galeria-05.webp',
-        'fotos-web/galeria/galeria-08.webp'
+        'fotos-web/galeria/arboles-01.webp',
+        'fotos-web/galeria/arboles-02.webp',
+        'fotos-web/galeria/cabana-aymar.webp',
+        'fotos-web/galeria/cabana-poetadeltiempo.webp'
       ],
       whatsappText: 'Hola CasaCuento, quiero conocer el bosque'
     },
@@ -451,10 +453,10 @@
         { icon: '\u{1F319}', title: 'Privacidad', text: 'Cada suite esta pensada para ofrecer silencio y descanso sin interrupciones.' }
       ],
       gallery: [
-        'fotos-web/galeria/habitacion-paula-01.webp',
-        'fotos-web/galeria/habitacion-unicornio-01.webp',
-        'fotos-web/galeria/habitacion-unicornio-02.webp',
-        'fotos-web/galeria/galeria-02.webp'
+        'fotos-web/galeria/habitacion-paula.webp',
+        'fotos-web/galeria/habitacion-unicornio.webp',
+        'fotos-web/galeria/habitacion-bano.webp',
+        'fotos-web/galeria/loft-arcaluz.webp'
       ],
       whatsappText: 'Hola CasaCuento, me interesan las habitaciones'
     },
@@ -469,9 +471,10 @@
         { icon: '\u{1F30C}', title: 'Cielos estrellados', text: 'En las noches despejadas, el cielo de Mantagua regala un manto de estrellas.' }
       ],
       gallery: [
-        'fotos-web/galeria/galeria-08.webp',
-        'fotos-web/galeria/galeria-04.webp',
-        'fotos-web/galeria/galeria-11.webp'
+        'fotos-web/galeria/chimenea.webp',
+        'fotos-web/galeria/fuego-calor.webp',
+        'fotos-web/galeria/suite-torreon.webp',
+        'fotos-web/galeria/suite-sanfrancisco.webp'
       ],
       whatsappText: 'Hola CasaCuento, me interesan las chimeneas'
     },
