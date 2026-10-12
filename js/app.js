@@ -420,14 +420,27 @@
     const closeBtn = document.getElementById('encantoModalClose');
     const titleEl = document.getElementById('encantoModalTitle');
     const textEl = document.getElementById('encantoModalText');
+    const galleryEl = document.getElementById('encantoModalGallery');
 
     document.querySelectorAll('[data-encanto]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const nombre = btn.dataset.encantoNombre || '';
         const texto = btn.dataset.encantoTexto || '';
+        const imagenes = (btn.dataset.encantoImagenes || '').split(',').map(s => s.trim()).filter(Boolean);
         if (titleEl) titleEl.textContent = nombre;
         if (textEl) textEl.textContent = texto;
+        if (galleryEl) {
+          if (imagenes.length) {
+            galleryEl.innerHTML = imagenes.map(src =>
+              `<img src="${src}" alt="${nombre}" loading="lazy" />`
+            ).join('');
+            galleryEl.style.display = 'grid';
+          } else {
+            galleryEl.innerHTML = '';
+            galleryEl.style.display = 'none';
+          }
+        }
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
