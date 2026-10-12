@@ -109,6 +109,7 @@
     const slider = document.getElementById('fontSlider');
     const minus = document.getElementById('fontBtnMinus');
     const plus = document.getElementById('fontBtnPlus');
+    const valueEl = document.getElementById('fontSizeValue');
     if (!slider) return;
 
     const STEP = 0.05;
@@ -120,8 +121,10 @@
       const s = clamp(scale);
       slider.value = s;
       document.documentElement.style.setProperty('--font-scale', s);
+<<<<<<< HEAD
       // Aplicar a <html> (no body) para que todos los elementos con 'rem' escalen
       document.documentElement.style.fontSize = (16 * s) + 'px';
+      if (valueEl) valueEl.textContent = Math.round(s * 100) + '%'; (Combinada: panel flotante inferior-izq con font-size y lang)
       try { localStorage.setItem(STORAGE_KEY, s); } catch (e) {}
     };
 
