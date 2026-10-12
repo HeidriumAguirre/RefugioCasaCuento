@@ -1557,3 +1557,176 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   font-family: var(--font-body);
   font-style: italic;
 }
+
+/* ============================================
+   MODAL DE SERVICIO RICO (Combinada)
+   Misma estructura que las paginas individuales,
+   pero en formato modal flotante.
+   ============================================ */
+.servicio-modal-combinada {
+  position: fixed; inset: 0; z-index: 240;
+  background: rgba(0, 0, 0, 0.75);
+  display: none !important;
+  align-items: stretch; justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+.servicio-modal-combinada.active { display: flex !important; animation: fadeInServicio 0.3s; }
+@keyframes fadeInServicio { from { opacity: 0; } to { opacity: 1; } }
+
+.servicio-modal-combinada {
+  align-items: flex-start;
+}
+
+.servicio-modal-close-combinada {
+  position: fixed; top: 18px; right: 18px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-bosque);
+  font-size: 18px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(46, 74, 62, 0.2);
+  transition: all 0.2s;
+  cursor: pointer;
+  z-index: 250;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.servicio-modal-close-combinada:hover { background: var(--color-oro); color: var(--color-crema); transform: scale(1.06); }
+
+.servicio-modal-hero-combinada {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-bosque-dark) 0%, var(--color-bosque) 100%);
+  color: var(--color-crema);
+  padding: 80px 24px 48px;
+  text-align: center;
+}
+.servicio-modal-hero-overlay-combinada {
+  position: absolute; inset: 0;
+  background: rgba(31, 51, 41, 0.4);
+}
+.servicio-modal-hero-content-combinada {
+  position: relative; z-index: 2;
+  max-width: 760px; margin: 0 auto;
+}
+.servicio-modal-eyebrow-combinada {
+  display: inline-block;
+  font-family: var(--font-decorative);
+  color: var(--color-oro-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  margin-bottom: 12px;
+}
+.servicio-modal-title-combinada {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 4.5vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.servicio-modal-subtitle-combinada {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  opacity: 0.92;
+}
+
+.servicio-modal-body-combinada {
+  background: var(--color-crema);
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 32px 48px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.servicio-modal-description-combinada {
+  color: var(--color-texto);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.servicio-modal-features-combinada {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+@media (min-width: 700px) { .servicio-modal-features-combinada { grid-template-columns: repeat(3, 1fr); } }
+.servicio-modal-feature-combinada {
+  background: var(--color-arena);
+  border: 1px solid var(--color-arena-dark);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  text-align: center;
+}
+.servicio-modal-feature-icon-combinada { font-size: 1.625rem; margin-bottom: 6px; }
+.servicio-modal-feature-title-combinada {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--color-bosque);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.servicio-modal-feature-text-combinada {
+  font-size: 0.8125rem;
+  color: var(--color-texto-muted);
+  line-height: 1.5;
+}
+
+.servicio-modal-section-title-combinada {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--color-bosque);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.servicio-modal-gallery-combinada {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+@media (min-width: 700px) { .servicio-modal-gallery-combinada { grid-template-columns: repeat(4, 1fr); } }
+.servicio-modal-gallery-combinada img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-arena-dark);
+  display: block;
+}
+.servicio-modal-no-gallery-combinada {
+  text-align: center;
+  color: var(--color-texto-muted);
+  font-style: italic;
+  font-size: 0.875rem;
+  padding: 24px;
+  background: var(--color-arena);
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+}
+
+.servicio-modal-cta-combinada { text-align: center; }
+.servicio-modal-cta-button-combinada {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--color-oro);
+  color: var(--color-bosque-dark);
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(201, 169, 98, 0.35);
+  transition: all 0.3s;
+}
+.servicio-modal-cta-button-combinada:hover {
+  background: var(--color-oro-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(201, 169, 98, 0.55);
+}

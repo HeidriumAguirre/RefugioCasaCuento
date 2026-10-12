@@ -387,33 +387,159 @@
   // ============================================
   // MODALES DE ENCANTOS
   // ============================================
-  const initEncantosModals = () => {
-    const overlay = document.getElementById('encantoModal');
-    if (!overlay) return;
-    const closeBtn = document.getElementById('encantoModalClose');
-    const titleEl = document.getElementById('encantoModalTitle');
-    const textEl = document.getElementById('encantoModalText');
-    const galleryEl = document.getElementById('encantoModalGallery');
+  const SERVICIOS = {
+    piscina: {
+      eyebrow: 'Servicio · Naturaleza',
+      title: 'Piscina y Cascada Encantada',
+      subtitle: 'Agua cristalina rodeada de naturaleza nativa, con cascada incorporada.',
+      description: 'Nuestra piscina al aire libre es el corazon del lugar. Agua cristalina rodeada de areas verdes, con espacio para relajarse bajo el sol de la costa. En verano se convierte en el punto de encuentro familiar; en otono e invierno, en un rincon tranquilo donde leer junto al agua.',
+      features: [
+        { icon: '\u{1F4A7}', title: 'Cascada natural', text: 'Cascada integrada al diseno del jardin, rodeada de piedras nativas y vegetacion.' },
+        { icon: '\u{1F33F}', title: 'Entorno verde', text: 'Areas verdes con arboles nativos que dan sombra y privacidad natural.' },
+        { icon: '\u{2600}\u{FE0F}', title: 'Todo el ano', text: 'Disponible en verano e invierno, temperada y apta para distintas edades.' }
+      ],
+      gallery: [
+        'fotos-web/galeria/galeria-01.webp',
+        'fotos-web/galeria/galeria-07.webp',
+        'fotos-web/galeria/galeria-06.webp',
+        'fotos-web/galeria/galeria-08.webp'
+      ],
+      whatsappText: 'Hola CasaCuento, me interesa la piscina'
+    },
+    desayuno: {
+      eyebrow: 'Servicio · Manana',
+      title: 'Desayuno de Cuento',
+      subtitle: 'Pan recien hecho, cafe de la zona y frutas frescas cada manana.',
+      description: 'Cada manana servimos un desayuno casero con productos frescos y locales: pan recien hecho, cafe de la zona, frutas de temporada y mermeladas artesanales. Es la forma mas encantadora de empezar el dia antes de salir a descubrir Mantagua.',
+      features: [
+        { icon: '\u{1F35E}', title: 'Pan artesanal', text: 'Pan recien hecho cada manana, horneado en casa con recetas tradicionales.' },
+        { icon: '\u{2615}', title: 'Cafe de la zona', text: 'Cafe de productores locales de la V Region, tostado suave para conservar su aroma.' },
+        { icon: '\u{1F36F}', title: 'Mermeladas y frutas', text: 'Mermeladas caseras y frutas de temporada de la zona.' }
+      ],
+      gallery: [
+        'fotos-web/galeria/galeria-10.webp',
+        'fotos-web/galeria/galeria-11.webp',
+        'fotos-web/galeria/galeria-09.webp'
+      ],
+      whatsappText: 'Hola CasaCuento, me interesa el desayuno'
+    },
+    bosque: {
+      eyebrow: 'Servicio · Naturaleza',
+      title: 'Arboles Magicos',
+      subtitle: 'El bosque nativo de Mantagua abraza cada rincon del hotel.',
+      description: 'Senderos para caminar, arboles centenarios, pajaros cantores a la manana. Una invitacion a desconectarse del ritmo de la ciudad y reconectar con lo esencial.',
+      features: [
+        { icon: '\u{1F332}', title: 'Bosque nativo', text: 'Arboles centenarios que forman un ecosistema protegido y silencioso.' },
+        { icon: '\u{1F97E}', title: 'Senderos', text: 'Caminos peatonales senalizados para recorrer el bosque a tu ritmo.' },
+        { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pajaros y fauna nativa para observar desde los miradores del hotel.' }
+      ],
+      gallery: [
+        'fotos-web/galeria/galeria-06.webp',
+        'fotos-web/galeria/galeria-05.webp',
+        'fotos-web/galeria/galeria-08.webp'
+      ],
+      whatsappText: 'Hola CasaCuento, quiero conocer el bosque'
+    },
+    habitaciones: {
+      eyebrow: 'Servicio · Confort',
+      title: 'Habitaciones de Cuento',
+      subtitle: 'Suites de piedra y madera noble, equipadas para el descanso mas profundo.',
+      description: 'Las suites combinan piedra y madera noble. Estan equipadas con ropa de cama premium, calefaccion y todo lo necesario para un descanso profundo. Cada habitacion tiene su propio caracter, inspirado en el bosque que las rodea.',
+      features: [
+        { icon: '\u{1F6CF}\u{FE0F}', title: 'Ropa de cama premium', text: 'Sabanas de algodon de alto gramaje y almohadas hipoalergenicas.' },
+        { icon: '\u{1F525}', title: 'Calefaccion', text: 'Calefaccion central para que el invierno sea calido y silencioso.' },
+        { icon: '\u{1F319}', title: 'Privacidad', text: 'Cada suite esta pensada para ofrecer silencio y descanso sin interrupciones.' }
+      ],
+      gallery: [
+        'fotos-web/galeria/habitacion-paula-01.webp',
+        'fotos-web/galeria/habitacion-unicornio-01.webp',
+        'fotos-web/galeria/habitacion-unicornio-02.webp',
+        'fotos-web/galeria/galeria-02.webp'
+      ],
+      whatsappText: 'Hola CasaCuento, me interesan las habitaciones'
+    },
+    fuego: {
+      eyebrow: 'Servicio · Calor',
+      title: 'Fuego y Calor',
+      subtitle: 'Chimeneas que encienden las noches y crean momentos memorables.',
+      description: 'Las chimeneas son el alma de las noches en CasaCuento. Enciendes el fuego, sirves un vino, y el tiempo se detiene. Calor, conversacion, estrellas a traves de los ventanales. Es la experiencia que nuestros huespedes mas recuerdan.',
+      features: [
+        { icon: '\u{1F525}', title: 'Chimenea encendida', text: 'Lena seca y servicio de encendido incluido para todas las noches frias.' },
+        { icon: '\u{1F377}', title: 'Espacios para compartir', text: 'Salones con chimenea para conversar, leer o tomar algo despues de cenar.' },
+        { icon: '\u{1F30C}', title: 'Cielos estrellados', text: 'En las noches despejadas, el cielo de Mantagua regala un manto de estrellas.' }
+      ],
+      gallery: [
+        'fotos-web/galeria/galeria-08.webp',
+        'fotos-web/galeria/galeria-04.webp',
+        'fotos-web/galeria/galeria-11.webp'
+      ],
+      whatsappText: 'Hola CasaCuento, me interesan las chimeneas'
+    },
+    eventos: {
+      eyebrow: 'Servicio · Celebracion',
+      title: 'Eventos de Maravillas',
+      subtitle: 'Matrimonios, cumpleanos y eventos corporativos en un entorno de cuento.',
+      description: 'Matrimonios, cumpleanos, aniversarios y eventos corporativos en un entorno de cuento. Coordinacion personalizada con nuestro equipo para que cada celebracion sea unica e inolvidable. La piscina, el bosque y la chimenea crean el marco perfecto para tus momentos mas importantes.',
+      features: [
+        { icon: '\u{1F48D}', title: 'Matrimonios', text: 'Ceremonias al aire libre con vista al bosque y la piscina como marco.' },
+        { icon: '\u{1F382}', title: 'Cumpleanos', text: 'Celebraciones intimas o grandes, con piscina privada disponible.' },
+        { icon: '\u{1F4BC}', title: 'Eventos corporativos', text: 'Retiros de equipo, reuniones ejecutivas y lanzamientos en un lugar inspirador.' }
+      ],
+      gallery: [],
+      whatsappText: 'Hola CasaCuento, quiero cotizar un evento'
+    }
+  };
 
-    document.querySelectorAll('[data-encanto]').forEach(btn => {
+  const initServicioModal = () => {
+    const overlay = document.getElementById('servicioModalCombinada');
+    if (!overlay) return;
+    const closeBtn = document.getElementById('servicioModalCloseCombinada');
+    const eyebrowEl = document.getElementById('servicioModalEyebrowCombinada');
+    const titleEl = document.getElementById('servicioModalTitleCombinada');
+    const subtitleEl = document.getElementById('servicioModalSubtitleCombinada');
+    const descEl = document.getElementById('servicioModalDescriptionCombinada');
+    const featuresEl = document.getElementById('servicioModalFeaturesCombinada');
+    const galleryEl = document.getElementById('servicioModalGalleryCombinada');
+    const ctaEl = document.getElementById('servicioModalCtaCombinada');
+
+    document.querySelectorAll('[data-servicio]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const nombre = btn.dataset.encantoNombre || '';
-        const texto = btn.dataset.encantoTexto || '';
-        const imagenes = (btn.dataset.encantoImagenes || '').split(',').map(s => s.trim()).filter(Boolean);
-        if (titleEl) titleEl.textContent = nombre;
-        if (textEl) textEl.textContent = texto;
+        const key = btn.dataset.servicio;
+        const data = SERVICIOS[key];
+        if (!data) return;
+
+        if (eyebrowEl) eyebrowEl.textContent = data.eyebrow;
+        if (titleEl) titleEl.textContent = data.title;
+        if (subtitleEl) subtitleEl.textContent = data.subtitle;
+        if (descEl) descEl.textContent = data.description;
+
+        if (featuresEl) {
+          featuresEl.innerHTML = (data.features || []).map(f => `
+            <div class="servicio-modal-feature-combinada">
+              <div class="servicio-modal-feature-icon-combinada">${f.icon}</div>
+              <h4 class="servicio-modal-feature-title-combinada">${f.title}</h4>
+              <p class="servicio-modal-feature-text-combinada">${f.text}</p>
+            </div>
+          `).join('');
+        }
+
         if (galleryEl) {
-          if (imagenes.length) {
-            galleryEl.innerHTML = imagenes.map(src =>
-              `<img src="${src}" alt="${nombre}" loading="lazy" />`
+          if (data.gallery && data.gallery.length) {
+            galleryEl.className = 'servicio-modal-gallery-combinada';
+            galleryEl.innerHTML = data.gallery.map(src =>
+              `<img src="${src}" alt="${data.title}" loading="lazy" />`
             ).join('');
-            galleryEl.style.display = 'grid';
           } else {
-            galleryEl.innerHTML = '';
-            galleryEl.style.display = 'none';
+            galleryEl.className = 'servicio-modal-no-gallery-combinada';
+            galleryEl.innerHTML = 'Aun no tenemos fotos para mostrar. Escribenos por WhatsApp y te enviamos ejemplos de eventos que hemos organizado.';
           }
         }
+
+        if (ctaEl) {
+          ctaEl.href = `https://wa.me/56991924089?text=${encodeURIComponent(data.whatsappText)}`;
+        }
+
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -423,7 +549,6 @@
       overlay.classList.remove('active');
       document.body.style.overflow = '';
     };
-
     if (closeBtn) closeBtn.addEventListener('click', close);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('active')) close(); });
@@ -552,7 +677,7 @@
     initAlojamientoForms();
     initChatbot();
     initGalleries();
-    initEncantosModals();
+    initServicioModal();
     initContactoModalCombinada();
     initReveal();
     initSmoothScroll();
