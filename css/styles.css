@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CSS CUSTOM PROPERTIES (Diseño "Combinado")
    ============================================ */
 :root {
@@ -1414,114 +1414,129 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 
 /* ============================================
-   MODAL DE CONTACTO
+   MODAL DE CONTACTO (Combinada)
+   Fondo claro borroso + form verde solido
    ============================================ */
 .contacto-modal-combinada {
   position: fixed; inset: 0; z-index: 250;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(250, 248, 245, 0.75);
   display: none !important;
   align-items: center; justify-content: center;
   padding: 24px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .contacto-modal-combinada.active { display: flex !important; animation: fadeInContacto 0.3s; }
 @keyframes fadeInContacto { from { opacity: 0; } to { opacity: 1; } }
 .contacto-modal-content-combinada {
-  background: var(--color-cream);
-  border-radius: 20px;
-  max-width: 480px; width: 100%;
+  background: var(--color-forest);
+  color: var(--color-cream);
+  border-radius: 24px;
+  max-width: 500px; width: 100%;
   max-height: 90vh; overflow-y: auto;
-  padding: 36px 32px;
+  padding: 44px 36px 36px;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--color-sand-dark);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(201, 169, 98, 0.35);
   animation: slideUpContacto 0.4s ease;
 }
-@keyframes slideUpContacto { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.contacto-modal-content-combinada::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-gold) 0%, #E8C77A 50%, var(--color-gold) 100%);
+  border-radius: 24px 24px 0 0;
+}
+@keyframes slideUpContacto { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .contacto-modal-close-combinada {
   position: absolute; top: 14px; right: 14px;
   width: 36px; height: 36px;
   border-radius: 50%;
-  background: var(--color-sand);
-  color: var(--color-forest);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-cream);
   font-size: 16px;
   display: grid; place-items: center;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.2s;
   cursor: pointer;
 }
-.contacto-modal-close-combinada:hover { background: var(--color-sand-dark); transform: scale(1.05); }
+.contacto-modal-close-combinada:hover { background: rgba(255, 255, 255, 0.22); transform: scale(1.05); }
 .contacto-modal-title-combinada {
   font-family: var(--font-display);
-  font-size: 1.75rem;
-  color: var(--color-forest);
+  font-size: 1.875rem;
+  color: var(--color-cream);
   margin: 0 0 8px;
   text-align: center;
   font-weight: 600;
 }
 .contacto-modal-subtitle-combinada {
-  color: var(--color-text-muted);
+  color: rgba(255, 248, 245, 0.8);
   font-family: var(--font-body);
-  font-style: italic;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   font-size: 0.95rem;
 }
-.contacto-form-combinada .form-group-combinada { margin-bottom: 14px; }
+.contacto-form-combinada .form-group-combinada { margin-bottom: 16px; }
 .contacto-form-combinada .form-group-combinada label {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  margin-bottom: 4px;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-bottom: 6px;
   font-weight: 600;
 }
 .contacto-form-combinada input,
 .contacto-form-combinada textarea {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--color-sand-dark);
-  border-radius: 8px;
-  background: var(--color-cream);
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--color-text-dark);
+  color: var(--color-cream);
   transition: all 0.2s;
   box-sizing: border-box;
+}
+.contacto-form-combinada input::placeholder,
+.contacto-form-combinada textarea::placeholder {
+  color: rgba(255, 248, 245, 0.5);
 }
 .contacto-form-combinada input:focus,
 .contacto-form-combinada textarea:focus {
   border-color: var(--color-gold);
   outline: none;
+  background: rgba(255, 255, 255, 0.14);
   box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.25);
 }
-.contacto-form-combinada textarea { resize: vertical; min-height: 100px; }
+.contacto-form-combinada textarea { resize: vertical; min-height: 110px; }
 .contacto-modal-btn-combinada {
   width: 100%;
-  padding: 14px 24px;
+  padding: 15px 24px;
   background: var(--color-gold);
-  color: var(--color-cream);
+  color: var(--color-forest-dark);
   border: none;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   font-size: 0.9375rem;
   transition: all 0.3s;
   margin-top: 8px;
   cursor: pointer;
-  box-shadow: var(--shadow-oro);
+  box-shadow: 0 8px 24px rgba(201, 169, 98, 0.35);
 }
 .contacto-modal-btn-combinada:hover {
   background: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(201, 169, 98, 0.4);
+  box-shadow: 0 12px 36px rgba(201, 169, 98, 0.55);
 }
 .contacto-modal-note-combinada {
-  margin-top: 12px;
+  margin-top: 14px;
   text-align: center;
   font-size: 0.875rem;
   color: var(--color-gold);
