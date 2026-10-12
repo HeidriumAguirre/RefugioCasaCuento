@@ -493,6 +493,69 @@
   // ============================================
   // INICIALIZACIÓN
   // ============================================
+  // MODAL DE CONTACTO (Combinada)
+  // ============================================
+  const initContactoModalCombinada = () => {
+    const btns = [
+      document.getElementById('contactoBtnCombinada'),
+      ...document.querySelectorAll('[data-open-contacto]')
+    ].filter(Boolean);
+    const modal = document.getElementById('contactoModalCombinada');
+    const close = document.getElementById('contactoModalCloseCombinada');
+    const form = document.getElementById('contactoFormCombinada');
+    const note = document.getElementById('contactoModalNoteCombinada');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+    if (close && modal) {
+      close.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombre = form.nombre.value.trim();
+        const asunto = form.asunto.value.trim();
+        const correo = form.correo.value.trim();
+        const mensaje = form.mensaje.value.trim();
+        if (!nombre || !asunto || !correo || !mensaje) {
+          if (note) { note.textContent = 'Por favor completa todos los campos.'; note.style.display = 'block'; note.style.color = '#C84B2D'; }
+          return;
+        }
+        const body = `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`;
+        const mailtoUrl = `mailto:refugiocasacuento@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+        if (note) { note.textContent = 'Abriendo tu cliente de correo...'; note.style.display = 'block'; note.style.color = '#2E4A3E'; }
+        setTimeout(() => {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+          form.reset();
+        }, 1000);
+      });
+    }
+  };
+
   const ready = window.__includesReady || Promise.resolve();
 
   ready.then(() => {
@@ -505,6 +568,7 @@
     initChatbot();
     initGalleries();
     initEncantosModals();
+    initContactoModalCombinada();
     initReveal();
     initSmoothScroll();
     initReservarButton();
