@@ -120,7 +120,8 @@
       const s = clamp(scale);
       slider.value = s;
       document.documentElement.style.setProperty('--font-scale', s);
-      document.body.style.fontSize = (16 * s) + 'px';
+      // Aplicar a <html> (no body) para que todos los elementos con 'rem' escalen
+      document.documentElement.style.fontSize = (16 * s) + 'px';
       try { localStorage.setItem(STORAGE_KEY, s); } catch (e) {}
     };
 

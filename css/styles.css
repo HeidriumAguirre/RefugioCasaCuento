@@ -47,10 +47,9 @@
    RESET + BASE
    ============================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; font-size: calc(16px * var(--font-scale, 1)); }
 body {
   font-family: var(--font-body);
-  font-size: calc(15px * var(--font-scale));
   line-height: 1.6;
   color: var(--color-texto);
   background-color: var(--color-crema);
@@ -224,12 +223,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
 .font-slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 90px;
+  width: 110px;
   height: 4px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   outline: none;
-  margin: 0 2px;
+  margin: 0 4px;
   cursor: pointer;
 }
 .site-header.scrolled .font-slider { background: var(--color-arena-dark); }
