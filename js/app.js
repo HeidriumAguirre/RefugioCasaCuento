@@ -102,43 +102,9 @@
   };
 
   // ============================================
-  // FONT SIZE
+  // FONT SIZE: deshabilitado (mantengo solo el idioma por ahora)
   // ============================================
-  const initFontSize = () => {
-    const STORAGE_KEY = 'casacuento-font-scale';
-    const slider = document.getElementById('fontSlider');
-    const minus = document.getElementById('fontBtnMinus');
-    const plus = document.getElementById('fontBtnPlus');
-    const valueEl = document.getElementById('fontSizeValue');
-    if (!slider) return;
-
-    const STEP = 0.05;
-    const MIN = parseFloat(slider.min);
-    const MAX = parseFloat(slider.max);
-    const clamp = (v) => Math.max(MIN, Math.min(MAX, Math.round(v / STEP) / STEP));
-
-    const applyScale = (scale) => {
-      const s = clamp(scale);
-      slider.value = s;
-      document.documentElement.style.setProperty('--font-scale', s);
-<<<<<<< HEAD
-      // Aplicar a <html> (no body) para que todos los elementos con 'rem' escalen
-      document.documentElement.style.fontSize = (16 * s) + 'px';
-      if (valueEl) valueEl.textContent = Math.round(s * 100) + '%'; (Combinada: panel flotante inferior-izq con font-size y lang)
-      try { localStorage.setItem(STORAGE_KEY, s); } catch (e) {}
-    };
-
-    let saved = 1;
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) saved = parseFloat(raw) || 1;
-    } catch (e) {}
-    applyScale(saved);
-
-    slider.addEventListener('input', () => applyScale(parseFloat(slider.value)));
-    if (minus) minus.addEventListener('click', () => applyScale(parseFloat(slider.value) - STEP));
-    if (plus) plus.addEventListener('click', () => applyScale(parseFloat(slider.value) + STEP));
-  };
+  // const initFontSize = () => { ... }; // removido
 
   // ============================================
   // IDIOMA: dropdown manual con ES / EN / PT
@@ -582,7 +548,6 @@
     setYear();
     initMultiLangLogo();
     initHeader();
-    initFontSize();
     initLangMenu();
     initAlojamientoForms();
     initChatbot();
