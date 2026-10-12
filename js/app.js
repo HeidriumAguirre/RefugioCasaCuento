@@ -105,26 +105,35 @@
   // FONT SIZE
   // ============================================
   const initFontSize = () => {
-    const STORAGE_KEY = 'casacuento-font-size';
-    const buttons = document.querySelectorAll('.font-btn');
-    if (!buttons.length) return;
+    const STORAGE_KEY = 'casacuento-font-scale';
+    const slider = document.getElementById('fontSlider');
+    const minus = document.getElementById('fontBtnMinus');
+    const plus = document.getElementById('fontBtnPlus');
+    if (!slider) return;
 
-    const applySize = (size) => {
-      const scale = size === 'small' ? 0.875 : size === 'large' ? 1.125 : 1;
-      document.documentElement.style.setProperty('--font-scale', scale);
-      document.body.style.fontSize = (16 * scale) + 'px';
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.size === size));
-      try { localStorage.setItem(STORAGE_KEY, size); } catch (e) {}
+    const STEP = 0.05;
+    const MIN = parseFloat(slider.min);
+    const MAX = parseFloat(slider.max);
+    const clamp = (v) => Math.max(MIN, Math.min(MAX, Math.round(v / STEP) / STEP));
+
+    const applyScale = (scale) => {
+      const s = clamp(scale);
+      slider.value = s;
+      document.documentElement.style.setProperty('--font-scale', s);
+      document.body.style.fontSize = (16 * s) + 'px';
+      try { localStorage.setItem(STORAGE_KEY, s); } catch (e) {}
     };
 
-    // Restaurar preferencia
-    let saved = 'normal';
-    try { saved = localStorage.getItem(STORAGE_KEY) || 'normal'; } catch (e) {}
-    applySize(saved);
+    let saved = 1;
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) saved = parseFloat(raw) || 1;
+    } catch (e) {}
+    applyScale(saved);
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => applySize(btn.dataset.size));
-    });
+    slider.addEventListener('input', () => applyScale(parseFloat(slider.value)));
+    if (minus) minus.addEventListener('click', () => applyScale(parseFloat(slider.value) - STEP));
+    if (plus) plus.addEventListener('click', () => applyScale(parseFloat(slider.value) + STEP));
   };
 
   // ============================================
