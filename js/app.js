@@ -688,6 +688,7 @@
     initReservarButton();
     initBookingDropdowns();
     initEstadosDisponibilidad();
+    initConsideracionesModal();
   });
 })();
 
@@ -744,4 +745,29 @@ const initEstadosDisponibilidad = async () => {
     badge.setAttribute('data-estado', estado);
     badge.style.background = cfg.color;
   });
+};
+
+/* === MODAL FLOTANTE: Consideraciones ===
+   Muestra el modal en la landing (index.html) salvo que el usuario
+   haya marcado "no volver a mostrar" (localStorage). */
+const initConsideracionesModal = () => {
+  const root = document.querySelector('[data-consideraciones]');
+  if (!root) return;
+  if (localStorage.getItem('consideraciones_dismissed') === '1') {
+    root.classList.add('oculta');
+    return;
+  }
+  // Mostrarlo (ya esta visible por CSS, pero por si lo escondimos antes)
+  root.classList.remove('oculta');
+  // Boton cerrar (X)
+  const closeBtn = root.querySelector('[data-consideraciones-cerrar]');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      const noMostrar = root.querySelector('[data-consideraciones-nomostrar]');
+      if (noMostrar && noMostrar.checked) {
+        localStorage.setItem('consideraciones_dismissed', '1');
+      }
+      root.classList.add('oculta');
+    });
+  }
 };
