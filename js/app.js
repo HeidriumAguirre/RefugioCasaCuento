@@ -3,8 +3,8 @@
 
   const WHATSAPP_NUMBER = '56991924089';
   const WHATSAPP_BASE = 'https://wa.me/' + WHATSAPP_NUMBER;
-  const BOOKING_URL = 'https://www.booking.com/hotel/cl/casa-cuento.es.html';
-  const EXPEDIA_URL = 'https://www.expedia.com/es/Vina-Del-Mar-Hoteles-Casa-Cuento.h16264146.Informacion-Hotel';
+  const BOOKING_URL = 'https://www.booking.com/hostal/cl/casa-cuento.es.html';
+  const EXPEDIA_URL = 'https://www.expedia.com/es/Vina-Del-Mar-Hoteles-Casa-Cuento.h16264146.Informacion-Hostal';
   const EMAIL_TO = 'refugiocasacuento@gmail.com';
 
   // Año dinámico footer
@@ -22,7 +22,7 @@
     const logoEs = 'assets/logo-refugio-casacuento-es.png';
     const logoEn = 'assets/logo-magic-house-en.png';
     const altEs = 'Refugio CasaCuento Hostal Mágico';
-    const altEn = 'Magic House Hotel Boutique - Refugio';
+    const altEn = 'Magic House Hostal Boutique - Refugio';
 
     const headerLogo = document.getElementById('headerLogo');
     const footerLogo = document.getElementById('footerLogo');
@@ -427,12 +427,12 @@
     bosque: {
       eyebrow: 'Servicio · Naturaleza',
       title: 'Arboles Magicos',
-      subtitle: 'El bosque nativo de Mantagua abraza cada rincon del hotel.',
+      subtitle: 'El bosque nativo de Mantagua abraza cada rincon del hostal.',
       description: 'Senderos para caminar, arboles centenarios, pajaros cantores a la manana. Una invitacion a desconectarse del ritmo de la ciudad y reconectar con lo esencial.',
       features: [
         { icon: '\u{1F332}', title: 'Bosque nativo', text: 'Arboles centenarios que forman un ecosistema protegido y silencioso.' },
         { icon: '\u{1F97E}', title: 'Senderos', text: 'Caminos peatonales senalizados para recorrer el bosque a tu ritmo.' },
-        { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pajaros y fauna nativa para observar desde los miradores del hotel.' }
+        { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pajaros y fauna nativa para observar desde los miradores del hostal.' }
       ],
       gallery: [
         'fotos-web/galeria/arboles-01.webp',
@@ -610,16 +610,17 @@
   // MODAL DE CONTACTO (Combinada)
   // ============================================
   const initContactoModalCombinada = () => {
-    const btns = [
-      document.getElementById('contactoBtnCombinada'),
-      ...document.querySelectorAll('[data-open-contacto]')
-    ].filter(Boolean);
+    // IMPORTANTE: "Contacto" del menu (data-open-contacto) ahora navega a
+    // contacto.html (redes sociales), NO abre este modal. Solo el boton
+    // "Contactar" del header (id="contactoBtnCombinada") abre este modal
+    // (es el formulario de contacto real, distinto del menu de redes).
+    const btn = document.getElementById('contactoBtnCombinada');
     const modal = document.getElementById('contactoModalCombinada');
     const close = document.getElementById('contactoModalCloseCombinada');
     const form = document.getElementById('contactoFormCombinada');
     const note = document.getElementById('contactoModalNoteCombinada');
 
-    btns.forEach(btn => {
+    if (btn) {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         if (modal) {
@@ -627,7 +628,7 @@
           document.body.style.overflow = 'hidden';
         }
       });
-    });
+    }
     if (close && modal) {
       close.addEventListener('click', () => {
         modal.classList.remove('active');
@@ -685,5 +686,62 @@
     initReveal();
     initSmoothScroll();
     initReservarButton();
+    initBookingDropdowns();
+    initEstadosDisponibilidad();
   });
 })();
+
+/* === BOOKING DROPDOWN: muestra/oculta el menu de "Ver sitios de alianza" === */
+const initBookingDropdowns = () => {
+  document.querySelectorAll('.booking-dropdown').forEach(btn => {
+    const trigger = btn.querySelector('.btn-bosque-dropdown');
+    const menu = btn.querySelector('.booking-dropdown-menu');
+    if (!trigger || !menu) return;
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = btn.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', e => {
+    document.querySelectorAll('.booking-dropdown.open').forEach(btn => {
+      if (!btn.contains(e.target)) {
+        btn.classList.remove('open');
+        const t = btn.querySelector('.btn-bosque-dropdown');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+};
+
+/* === ESTADOS DE DISPONIBILIDAD: lee data/availability.json y actualiza cada card === */
+const initEstadosDisponibilidad = async () => {
+  const cards = document.querySelectorAll('.estado-card');
+  if (cards.length === 0) return;
+  let data = { espacios: {} };
+  try {
+    const res = await fetch('data/availability.json', { cache: 'no-store' });
+    if (res.ok) data = await res.json();
+  } catch (err) {
+    console.warn('No se pudo cargar availability.json:', err);
+  }
+  cards.forEach(card => {
+    const nombre = card.dataset.espacio;
+    const badge = card.querySelector('[data-estado-badge]');
+    if (!nombre || !badge) return;
+    const estado = (data.espacios && data.espacios[nombre]) || 'desconocido';
+    const mapa = {
+      'disponible':   { texto: 'Disponible',   color: '#2E8B57' },
+      'reservado':    { texto: 'Reservado',    color: '#C0392B' },
+      'mantenimiento':{ texto: 'Mantenimiento', color: '#B8860B' },
+    };
+    const cfg = mapa[estado] || { texto: 'Sin info', color: '#888' };
+    badge.textContent = cfg.texto;
+    badge.setAttribute('data-estado', estado);
+    badge.style.background = cfg.color;
+  });
+};

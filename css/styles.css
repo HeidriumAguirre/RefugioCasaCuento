@@ -1730,3 +1730,104 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   transform: translateY(-2px);
   box-shadow: 0 12px 36px rgba(201, 169, 98, 0.55);
 }
+/* ============================================
+   ESTADO + VALORES + BOOKING DROPDOWN (Espacios)
+   ============================================ */
+.estado-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 16px; margin-top: 12px; margin-bottom: 4px;
+  border: 1px solid #E8DFD4; border-radius: 12px;
+  background: var(--color-arena, #F5F0E8);
+}
+.estado-badge {
+  display: inline-block; padding: 6px 14px; border-radius: 999px;
+  font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em;
+  background: #C8C8C8; color: #fff;
+}
+.estado-badge[data-estado="disponible"] { background: #2E8B57; }
+.estado-badge[data-estado="reservado"]   { background: #C0392B; }
+.estado-badge[data-estado="mantenimiento"] { background: #B8860B; }
+.estado-label { font-weight: 600; font-size: 0.85rem; color: #444; }
+.estado-help  { font-size: 0.75rem; color: #777; text-align: center; }
+.estado-help a { color: var(--color-bosque, #2E4A3E); text-decoration: underline; }
+
+.precios-card {
+  margin-top: 12px; padding: 14px 16px;
+  border: 1px solid #E8DFD4; border-radius: 12px;
+  background: #fff;
+}
+.precios-titulo {
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--color-bosque, #2E4A3E);
+  margin-bottom: 8px;
+}
+.precios-tabla {
+  width: 100%; border-collapse: collapse; font-size: 0.9rem;
+}
+.precios-tabla th, .precios-tabla td {
+  padding: 8px 6px; text-align: center;
+  border-bottom: 1px solid #EFE7DA;
+}
+.precios-tabla th {
+  background: #F5F0E8; color: #2E4A3E; font-weight: 600; font-size: 0.78rem;
+}
+.precios-tabla td { color: #333; }
+.precios-tabla td strong { color: #C0392B; }
+
+.booking-dropdown {
+  position: relative; display: inline-block; flex: 1; min-width: 160px;
+}
+.booking-dropdown .btn-bosque-dropdown {
+  width: 100%; display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+}
+.booking-dropdown .caret { font-size: 0.85em; }
+.booking-dropdown-menu {
+  display: none; position: absolute; bottom: calc(100% + 6px); left: 0;
+  min-width: 100%; background: #fff; border: 1px solid #E8DFD4;
+  border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  list-style: none; margin: 0; padding: 6px 0; z-index: 50;
+}
+.booking-dropdown[data-sitio="open"] .booking-dropdown-menu,
+.booking-dropdown.open .booking-dropdown-menu { display: block; }
+.booking-dropdown-menu li { margin: 0; }
+.booking-dropdown-menu a {
+  display: block; padding: 10px 16px; color: #2E4A3E; text-decoration: none;
+  font-weight: 500; font-size: 0.9rem; transition: background 0.15s;
+}
+.booking-dropdown-menu a:hover { background: #F5F0E8; }
+
+/* ============================================
+   INFO DE ACCESO (familias con ninos / animales)
+   ============================================ */
+.info-acceso { background: #FBF7EF; padding: 60px 0; }
+.info-acceso-card {
+  max-width: 1000px; margin: 0 auto; padding: 0 20px;
+}
+.info-acceso-card .section-title {
+  text-align: center; color: var(--color-bosque, #2E4A3E);
+  margin-bottom: 32px;
+}
+.info-acceso-grid {
+  display: grid; gap: 24px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .info-acceso-grid { grid-template-columns: 1fr 1fr; }
+}
+.info-acceso-item {
+  background: #fff; border: 1px solid #E8DFD4; border-radius: 12px;
+  padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.info-acceso-icon {
+  width: 48px; height: 48px; color: var(--color-bosque, #2E4A3E);
+  margin-bottom: 12px;
+}
+.info-acceso-item h3 {
+  font-size: 1.2rem; color: var(--color-bosque, #2E4A3E);
+  margin: 0 0 8px; font-weight: 600;
+}
+.info-acceso-item p {
+  font-size: 0.95rem; line-height: 1.6; color: #555; margin: 0;
+}
+.info-acceso-item strong { color: var(--color-bosque, #2E4A3E); }

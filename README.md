@@ -1,6 +1,6 @@
 # ✨ Refugio CasaCuento
 
-Sitio web de **Refugio CasaCuento** — hotel boutique y hostal mágico en Mantagua, Concón, V Región de Chile.
+Sitio web de **Refugio CasaCuento** — hostal boutique y hostal mágico en Mantagua, Concón, V Región de Chile.
 
 🌐 **Sitio en vivo:** [https://refugiocasacuento.vercel.app](https://refugiocasacuento.vercel.app)
 
@@ -18,7 +18,7 @@ Tercera versión del sitio que combina:
 - **Tagline:** "Paz, Amor y Fuego"
 - **Slogan bilingüe:**
   - Español: "Refugio CasaCuento · Hostal Mágico"
-  - Inglés: "Magic House · Hotel Boutique - Refugio"
+  - Inglés: "Magic House · Hostal Boutique - Refugio"
 - **Paleta:** Verde bosque, pergamino, oro, fuego
 - **Logo:** 2 versiones, se muestran según el idioma del navegador
 
