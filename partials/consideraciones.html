@@ -1,19 +1,29 @@
-<!--
-  partials/consideraciones.html
-  Modal flotante (banner inferior) con las consideraciones de la casa.
-  Aparece automaticamente al cargar la pagina; el usuario puede cerrarlo
-  y la eleccion se guarda en localStorage para no volver a mostrarlo.
--->
 <div class="consideraciones-flotante" id="consideracionesFlotante" data-consideraciones>
   <div class="consideraciones-contenido">
     <button type="button" class="consideraciones-cerrar" aria-label="Cerrar aviso" data-consideraciones-cerrar>&times;</button>
     <div class="consideraciones-titulo">Antes de reservar, considera</div>
     <ul class="consideraciones-lista">
-      <li>Cada espacio esta pensado para parejas y grupos tranquilos. <strong>No es ideal para familias con niños pequenos</strong> por las estructuras del lugar.</li>
-      <li><strong>No se admiten animales</strong> en el hostal, sus jardines ni sus espacios comunes.</li>
+      <li>Cada espacio está pensado para parejas y grupos tranquilos. <strong>No es un hospedaje ideal para familias con niños pequeños</strong>, ya que las estructuras (escalas, barandas, desniveles, cuerpos de agua) podrían generar conflictos de seguridad. Si viajas con niños, contáctanos antes por WhatsApp para evaluar cada caso.</li>
+      <li><strong>No se admiten animales</strong> en el hostal, sus jardines ni sus espacios comunes. Por respeto a la tranquilidad de la naturaleza del lugar y de los demás huéspedes, no se permite el ingreso de animales al hostal. Si necesitas dejar a tu mascota, el pueblo cuenta con servicios de cuidado diurno.</li>
     </ul>
     <label class="consideraciones-no-mostrar">
       <input type="checkbox" data-consideraciones-nomostrar /> No volver a mostrar
     </label>
+  </div>
+</div>
+
+<!-- Modal central de consideraciones (para usar al hacer reserva) -->
+<div class="consideraciones-modal" id="consideracionesModal" role="dialog" aria-modal="true" aria-labelledby="consideracionesModalTitle">
+  <div class="consideraciones-modal-contenido">
+    <button type="button" class="consideraciones-modal-cerrar" id="consideracionesModalCerrar" aria-label="Cerrar">&times;</button>
+    <h2 class="consideraciones-modal-titulo" id="consideracionesModalTitle">Antes de reservar, considera</h2>
+    <ul class="consideraciones-lista-modal">
+      <li>Cada espacio está pensado para parejas y grupos tranquilos. <strong>No es un hospedaje ideal para familias con niños pequeños</strong>, ya que las estructuras (escalas, barandas, desniveles, cuerpos de agua) podrían generar conflictos de seguridad. Si viajas con niños, contáctanos antes por WhatsApp para evaluar cada caso.</li>
+      <li><strong>No se admiten animales</strong> en el hostal, sus jardines ni sus espacios comunes. Por respeto a la tranquilidad de la naturaleza del lugar y de los demás huéspedes, no se permite el ingreso de animales al hostal. Si necesitas dejar a tu mascota, el pueblo cuenta con servicios de cuidado diurno.</li>
+    </ul>
+    <label class="consideraciones-no-mostrar-modal">
+      <input type="checkbox" id="consideracionesModalNomostrar" /> No volver a mostrar
+    </label>
+    <button type="button" class="consideraciones-modal-aceptar" id="consideracionesModalAceptar">Entendido, continuar</button>
   </div>
 </div>
