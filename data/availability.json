@@ -3,13 +3,13 @@
   "actualizado_por": "Alexis",
   "nota": "Alexis actualiza este archivo a mano desde su celular. El sitio lo lee cada vez que se carga y refleja el estado en cada card.",
   "espacios": {
-    "Paula":           "disponible",
-    "Unicornio":       "disponible",
-    "ArcaLuz":         "disponible",
-    "PatioAzul":       "reservado",
-    "SanFrancisco":    "disponible",
-    "Torreon":         "disponible",
-    "AyMar":           "disponible",
+    "Paula":           "Disponible",
+    "Unicornio":       "Disponible",
+    "ArcaLuz":         "Disponible",
+    "PatioAzul":       "Reservado",
+    "SanFrancisco":    "Disponible",
+    "Torreon":         "Disponible",
+    "AyMar":           "Disponible",
     "PoetaDelTiempo":  "Reservado"
   }
 }
