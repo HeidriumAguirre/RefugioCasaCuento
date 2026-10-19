@@ -1694,6 +1694,24 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   position: relative; z-index: 2;
   max-width: 460px; width: 100%;
 }
+
+/* Mobile: el modal se ve como una pagina completa */
+@media (max-width: 899px) {
+  .servicio-modal-combinada.active { padding: 0; }
+  .servicio-modal-hero-combinada {
+    padding: 28px 20px;
+    min-height: 200px;
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+  .servicio-modal-body-combinada {
+    padding: 28px 20px 56px;
+    border-radius: 0;
+  }
+  .servicio-modal-close-combinada {
+    top: 12px; right: 12px;
+  }
+}
 .servicio-modal-eyebrow-combinada {
   display: inline-block;
   font-family: var(--font-decorative);
