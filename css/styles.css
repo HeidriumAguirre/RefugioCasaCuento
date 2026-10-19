@@ -139,7 +139,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
   width: auto;
   max-width: 200px;
   transition: all var(--transition-base);
-  mix-blend-mode: multiply;
 }
 .site-header.scrolled .logo-img { height: 44px; }
 .footer-logo .logo-img { height: 70px; max-width: 260px; }
@@ -976,10 +975,21 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   line-height: 1.7;
   font-style: italic;
   margin-bottom: 16px;
+  position: relative;
+  padding-left: 18px;
+}
+.testimonio-texto::before {
+  content: '\201C';
+  color: var(--color-oro);
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-style: italic;
+  line-height: 1;
+  position: absolute;
+  left: -2px; top: -4px;
 }
 .testimonio-autor {
   display: flex; align-items: center; gap: 12px;
-  justify-content: flex-end;
 }
 .testimonio-autor-avatar {
   width: 44px; height: 44px;
@@ -1649,19 +1659,23 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   position: relative;
   background: linear-gradient(135deg, var(--color-bosque-dark) 0%, var(--color-bosque) 100%);
   color: var(--color-crema);
-  padding: 60px 28px;
+  padding: 36px 28px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 200px;
+  flex-shrink: 0;
 }
 @media (min-width: 900px) {
   .servicio-modal-hero-combinada {
     flex: 1 1 50%;
+    padding: 60px 28px;
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
+    min-height: 0;
   }
 }
 .servicio-modal-hero-overlay-combinada {
