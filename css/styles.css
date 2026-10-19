@@ -1697,16 +1697,24 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 
 /* Mobile: el modal se ve como una pagina completa */
 @media (max-width: 899px) {
-  .servicio-modal-combinada.active { padding: 0; }
+  .servicio-modal-combinada.active {
+    padding: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
   .servicio-modal-hero-combinada {
     padding: 28px 20px;
-    min-height: 200px;
+    min-height: 160px;
     border-radius: 0;
     flex-shrink: 0;
   }
   .servicio-modal-body-combinada {
     padding: 28px 20px 56px;
     border-radius: 0;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .servicio-modal-close-combinada {
     top: 12px; right: 12px;
