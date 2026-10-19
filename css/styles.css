@@ -606,10 +606,9 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('fotos-web/galeria/galeria-01.webp');
+  background-image: url('fotos-web/galeria/galeria-08.webp');
   background-size: cover; background-position: center;
-  opacity: 0.55;
-  filter: blur(2px);
+  opacity: 0.85;
   animation: heroZoom 30s ease-in-out infinite alternate;
 }
 @keyframes heroZoom {
@@ -618,7 +617,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(31, 51, 41, 0.5) 0%, rgba(31, 51, 41, 0.7) 100%);
+  background: linear-gradient(180deg, rgba(31, 51, 41, 0.35) 0%, rgba(31, 51, 41, 0.55) 100%);
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -976,7 +975,8 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   font-style: italic;
   margin-bottom: 16px;
   position: relative;
-  padding-left: 18px;
+  padding-left: 22px;
+  padding-right: 22px;
 }
 .testimonio-texto::before {
   content: '\201C';
@@ -986,7 +986,17 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   font-style: italic;
   line-height: 1;
   position: absolute;
-  left: -2px; top: -4px;
+  left: 0; top: -4px;
+}
+.testimonio-texto::after {
+  content: '\201D';
+  color: var(--color-oro);
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-style: italic;
+  line-height: 1;
+  position: absolute;
+  right: 0; bottom: -10px;
 }
 .testimonio-autor {
   display: flex; align-items: center; gap: 12px;
@@ -1010,19 +1020,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 .eventos-section {
   background: linear-gradient(135deg, var(--color-bosque) 0%, var(--color-bosque-dark) 100%);
   color: var(--color-crema);
-  position: relative;
-  overflow: hidden;
 }
-.eventos-section::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 0;
-  background-image: url('fotos-web/galeria/chimenea.webp');
-  background-size: cover; background-position: center;
-  opacity: 0.22;
-  filter: blur(4px);
-  pointer-events: none;
-}
-.eventos-section > * { position: relative; z-index: 1; }
 .eventos-section .section-title { color: var(--color-oro-light); }
 .eventos-section .section-eyebrow { color: var(--color-oro); }
 .eventos-section .section-subtitle { color: rgba(255, 255, 255, 0.8); }
