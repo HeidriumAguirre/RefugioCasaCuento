@@ -606,9 +606,9 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('fotos-web/galeria/galeria-08.webp');
+  background-image: url('../fotos-web/galeria/arboles-01.webp');
   background-size: cover; background-position: center;
-  opacity: 0.85;
+  opacity: 0.9;
   animation: heroZoom 30s ease-in-out infinite alternate;
 }
 @keyframes heroZoom {
@@ -617,7 +617,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(31, 51, 41, 0.35) 0%, rgba(31, 51, 41, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(31, 51, 41, 0.25) 0%, rgba(31, 51, 41, 0.45) 100%);
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -1020,7 +1020,19 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 .eventos-section {
   background: linear-gradient(135deg, var(--color-bosque) 0%, var(--color-bosque-dark) 100%);
   color: var(--color-crema);
+  position: relative;
+  overflow: hidden;
 }
+.eventos-section::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('../fotos-web/galeria/chimenea.webp');
+  background-size: cover; background-position: center;
+  opacity: 0.22;
+  filter: blur(4px);
+  pointer-events: none;
+}
+.eventos-section > * { position: relative; z-index: 1; }
 .eventos-section .section-title { color: var(--color-oro-light); }
 .eventos-section .section-eyebrow { color: var(--color-oro); }
 .eventos-section .section-subtitle { color: rgba(255, 255, 255, 0.8); }
@@ -1612,12 +1624,10 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
    ============================================ */
 .servicio-modal-combinada {
   position: fixed; inset: 0; z-index: 240;
-  background: rgba(0, 0, 0, 0.75);
+  background: transparent;
   display: none !important;
   align-items: stretch; justify-content: center;
   padding: 24px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   overflow-y: auto;
 }
 .servicio-modal-combinada.active {
