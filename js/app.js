@@ -163,12 +163,14 @@
       ``,
       `• Alojamiento: ${opts.alojamiento}`,
       `• Fecha de entrada: ${opts.fechaEntrada}`,
-      `• Fecha de salida: ${opts.fechaSalida}`,
-      `• Personas: ${opts.personas}`,
     ];
+    if (opts.fechaSalida) lines.push(`• Fecha de salida: ${opts.fechaSalida}`);
+    lines.push(`• Personas: ${opts.personas}`);
     if (opts.cascada) lines.push(`• Cascada en piscina: Sí (+$${opts.cascadaPrecio || 90000} CLP)`);
     lines.push('');
     lines.push('Quedo atento a su confirmación. ¡Gracias!');
+    lines.push('');
+    lines.push('PD: CasaCuento no admite niños pequeños ni animales. Si viajan con niños, conversemos antes por este medio para evaluar cada caso. ¡Gracias!');
 
     const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank');
@@ -182,13 +184,24 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const alojamiento = form.dataset.alojamiento || 'alojamiento';
-        const fechaEntrada = form.querySelector('[name="fechaEntrada"]').value;
-        const fechaSalida = form.querySelector('[name="fechaSalida"]').value;
-        const personas = form.querySelector('[name="personas"]').value;
+        const fechaEntradaEl = form.querySelector('[name="fechaEntrada"]');
+        const fechaSalidaEl = form.querySelector('[name="fechaSalida"]');
+        const personasEl = form.querySelector('[name="personas"]');
+        const fechaEntrada = fechaEntradaEl?.value || '';
+        const fechaSalida = fechaSalidaEl?.value || '';
+        const personas = personasEl?.value || '';
         const cascada = form.querySelector('[name="cascada"]')?.checked || false;
 
-        if (!fechaEntrada || !fechaSalida) {
-          alert('Por favor selecciona fecha de entrada y salida.');
+        if (fechaEntradaEl && !fechaEntrada) {
+          alert('Por favor selecciona la fecha de entrada.');
+          return;
+        }
+        if (fechaSalidaEl && !fechaSalida) {
+          alert('Por favor selecciona la fecha de salida.');
+          return;
+        }
+        if (personasEl && !personas) {
+          alert('Por favor indica el número de personas.');
           return;
         }
 
@@ -363,24 +376,53 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
     if (lightbox && lightboxImg && lightboxClose) {
-      document.querySelectorAll('.galeria-item').forEach(item => {
+      const galeriaItems = Array.from(document.querySelectorAll('.galeria-item'));
+      const galeriaImgs = galeriaItems
+        .map(item => item.querySelector('img'))
+        .filter(img => img);
+      let currentIndex = 0;
+
+      const showAt = (idx) => {
+        if (!galeriaImgs.length) return;
+        if (idx < 0) idx = galeriaImgs.length - 1;
+        if (idx >= galeriaImgs.length) idx = 0;
+        currentIndex = idx;
+        const img = galeriaImgs[idx];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+      };
+
+      galeriaItems.forEach((item, idx) => {
         item.addEventListener('click', () => {
           const img = item.querySelector('img');
           if (!img) return;
+          currentIndex = galeriaImgs.indexOf(img);
           lightboxImg.src = img.src;
           lightboxImg.alt = img.alt || '';
           lightbox.classList.add('active');
           document.body.style.overflow = 'hidden';
         });
       });
+
       const closeLightbox = () => {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
       };
       lightboxClose.addEventListener('click', closeLightbox);
       lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+
+      if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIndex - 1); });
+      if (lightboxNext) lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIndex + 1); });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') { closeLightbox(); return; }
+        if (e.key === 'ArrowLeft')  { showAt(currentIndex - 1); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { showAt(currentIndex + 1); e.preventDefault(); }
+      });
     }
   };
 
@@ -720,13 +762,14 @@
       });
     }
 
-    // 3. Mostrar modal al enviar formulario de reserva
+    // 3. Mostrar modal al enviar formulario de reserva (solo una vez por form)
     const formsReserva = document.querySelectorAll('[data-alojamiento-form]');
     formsReserva.forEach(form => {
       form.addEventListener('submit', (e) => {
         if (!modal) return;
-        // Si el usuario ya acepto antes, dejamos pasar al handler de WhatsApp
         if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+        if (form.dataset.consideracionesVisto === '1') return;
+        form.dataset.consideracionesVisto = '1';
         e.preventDefault();
         e.stopImmediatePropagation();
         modal.classList.add('visible');
@@ -741,6 +784,12 @@
           };
         }
       });
+    });
+
+    // 4. Calendario: descartar fechas pasadas en cualquier input[type=date]
+    const hoyISO = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+      if (!input.min) input.min = hoyISO;
     });
   };
 

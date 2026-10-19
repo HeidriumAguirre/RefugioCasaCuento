@@ -139,6 +139,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
   width: auto;
   max-width: 200px;
   transition: all var(--transition-base);
+  mix-blend-mode: multiply;
 }
 .site-header.scrolled .logo-img { height: 44px; }
 .footer-logo .logo-img { height: 70px; max-width: 260px; }
@@ -608,7 +609,8 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   position: absolute; inset: 0; z-index: 0;
   background-image: url('fotos-web/galeria/galeria-01.webp');
   background-size: cover; background-position: center;
-  opacity: 0.4;
+  opacity: 0.55;
+  filter: blur(2px);
   animation: heroZoom 30s ease-in-out infinite alternate;
 }
 @keyframes heroZoom {
@@ -909,8 +911,30 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   font-size: 20px;
   display: grid; place-items: center;
   transition: background var(--transition-fast);
+  z-index: 2;
 }
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-crema);
+  font-size: 30px; line-height: 1;
+  display: grid; place-items: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+  cursor: pointer;
+}
+.lightbox-nav:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.06); }
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+@media (max-width: 600px) {
+  .lightbox-nav { width: 44px; height: 44px; font-size: 24px; }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+}
 
 /* ============================================
    TESTIMONIOS
@@ -955,6 +979,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .testimonio-autor {
   display: flex; align-items: center; gap: 12px;
+  justify-content: flex-end;
 }
 .testimonio-autor-avatar {
   width: 44px; height: 44px;
@@ -975,7 +1000,19 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 .eventos-section {
   background: linear-gradient(135deg, var(--color-bosque) 0%, var(--color-bosque-dark) 100%);
   color: var(--color-crema);
+  position: relative;
+  overflow: hidden;
 }
+.eventos-section::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('fotos-web/galeria/chimenea.webp');
+  background-size: cover; background-position: center;
+  opacity: 0.22;
+  filter: blur(4px);
+  pointer-events: none;
+}
+.eventos-section > * { position: relative; z-index: 1; }
 .eventos-section .section-title { color: var(--color-oro-light); }
 .eventos-section .section-eyebrow { color: var(--color-oro); }
 .eventos-section .section-subtitle { color: rgba(255, 255, 255, 0.8); }
@@ -1201,6 +1238,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   border-radius: var(--radius-md);
   padding: 20px;
   margin-top: 20px;
+  color: var(--color-texto);
 }
 .alojamiento-form-title {
   font-family: var(--font-display);
@@ -1574,12 +1612,22 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   -webkit-backdrop-filter: blur(8px);
   overflow-y: auto;
 }
-.servicio-modal-combinada.active { display: flex !important; animation: fadeInServicio 0.3s; }
-@keyframes fadeInServicio { from { opacity: 0; } to { opacity: 1; } }
-
-.servicio-modal-combinada {
-  align-items: flex-start;
+.servicio-modal-combinada.active {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInServicio 0.3s;
 }
+@media (min-width: 900px) {
+  .servicio-modal-combinada.active {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+@keyframes fadeInServicio { from { opacity: 0; } to { opacity: 1; } }
 
 .servicio-modal-close-combinada {
   position: fixed; top: 18px; right: 18px;
@@ -1601,8 +1649,20 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   position: relative;
   background: linear-gradient(135deg, var(--color-bosque-dark) 0%, var(--color-bosque) 100%);
   color: var(--color-crema);
-  padding: 80px 24px 48px;
+  padding: 60px 28px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 900px) {
+  .servicio-modal-hero-combinada {
+    flex: 1 1 50%;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
 }
 .servicio-modal-hero-overlay-combinada {
   position: absolute; inset: 0;
@@ -1610,7 +1670,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .servicio-modal-hero-content-combinada {
   position: relative; z-index: 2;
-  max-width: 760px; margin: 0 auto;
+  max-width: 460px; width: 100%;
 }
 .servicio-modal-eyebrow-combinada {
   display: inline-block;
@@ -1634,12 +1694,18 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 
 .servicio-modal-body-combinada {
   background: var(--color-crema);
-  max-width: 800px;
   width: 100%;
-  margin: 0 auto;
   padding: 40px 32px 48px;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
+}
+@media (min-width: 900px) {
+  .servicio-modal-body-combinada {
+    flex: 1 1 50%;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 0;
+  }
 }
 
 .servicio-modal-description-combinada {
