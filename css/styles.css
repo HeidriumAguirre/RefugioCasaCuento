@@ -227,12 +227,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
 .lang-btn {
   background: var(--color-arena);
   color: var(--color-bosque);
-  width: 34px; height: 34px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   display: grid; place-items: center;
   transition: all var(--transition-fast);
   cursor: pointer;
   border: 1px solid var(--color-arena-dark);
+  flex-shrink: 0;
 }
 .lang-btn:hover {
   background: var(--color-oro);
@@ -279,7 +280,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
 @media (max-width: 480px) {
   .floating-settings { bottom: 14px; left: 14px; }
   .floating-settings-inner { padding: 4px 8px; gap: 4px; }
-  .lang-btn { width: 30px; height: 30px; }
+  .lang-btn { width: 44px; height: 44px; }
 }
 
 .nav-btn {
@@ -408,7 +409,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
 }
 .footer-social { display: flex; gap: 12px; margin-top: 8px; }
 .footer-social a {
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   display: grid; place-items: center;
   background: rgba(201, 169, 98, 0.1);
   border: 1px solid rgba(201, 169, 98, 0.3);
@@ -1348,7 +1349,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 }
 .encanto-modal-close {
   position: absolute; top: 12px; right: 12px;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--color-arena);
   color: var(--color-bosque);
@@ -1465,7 +1466,7 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 @keyframes slideUpContacto { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .contacto-modal-close-combinada {
   position: absolute; top: 14px; right: 14px;
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: var(--color-crema);
@@ -1853,9 +1854,10 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
 .consideraciones-contenido { position: relative; }
 .consideraciones-cerrar {
   position: absolute; top: -6px; right: -10px;
-  width: 32px; height: 32px; border: 0; border-radius: 50%;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
   background: #2E4A3E; color: #FFF; font-size: 20px; line-height: 1;
   cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  display: grid; place-items: center;
 }
 .consideraciones-titulo {
   font-weight: 700; color: #2E4A3E; font-size: 1rem;
@@ -1877,4 +1879,209 @@ body.chatbot-ready .chatbot { opacity: 1; pointer-events: all; }
   .consideraciones-flotante { left: 8px; right: 8px; bottom: 8px; padding: 16px 18px 14px; }
   .consideraciones-titulo { font-size: 0.95rem; }
   .consideraciones-lista { font-size: 0.85rem; }
+}
+
+
+/* ============================================
+   MODAL DE CONSIDERACIONES (al reservar)
+   ============================================ */
+.consideraciones-modal {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(31, 51, 41, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 24px;
+  animation: consid-modal-fade 0.25s ease both;
+}
+.consideraciones-modal.visible {
+  display: flex;
+}
+@keyframes consid-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.consideraciones-modal-contenido {
+  background: #FFFFFF;
+  border-radius: 18px;
+  max-width: 560px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  padding: 32px 32px 28px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--color-arena-dark);
+  animation: consid-modal-slide 0.3s ease both;
+}
+@keyframes consid-modal-slide {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.consideraciones-modal-cerrar {
+  position: absolute; top: 12px; right: 12px;
+  width: 44px; height: 44px;
+  background: var(--color-arena); color: var(--color-bosque);
+  border: 0; border-radius: 50%;
+  font-size: 20px; line-height: 1; cursor: pointer;
+  display: grid; place-items: center;
+  transition: all 0.2s;
+}
+.consideraciones-modal-cerrar:hover { background: var(--color-oro); color: var(--color-crema); }
+.consideraciones-modal-titulo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-bosque);
+  margin: 0 0 16px;
+  text-align: center;
+}
+.consideraciones-lista-modal {
+  margin: 0 0 18px; padding-left: 20px; color: #444;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.consideraciones-lista-modal li { margin-bottom: 8px; }
+.consideraciones-lista-modal strong { color: var(--color-bosque); }
+.consideraciones-no-mostrar-modal {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; color: #777;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.consideraciones-no-mostrar-modal input { width: 16px; height: 16px; cursor: pointer; }
+.consideraciones-modal-aceptar {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--color-oro); color: var(--color-bosque-dark);
+  border: 0; border-radius: 999px;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 1rem; letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 8px 24px rgba(201, 169, 98, 0.35);
+}
+.consideraciones-modal-aceptar:hover {
+  background: var(--color-oro-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(201, 169, 98, 0.5);
+}
+@media (max-width: 480px) {
+  .consideraciones-modal { padding: 16px; }
+  .consideraciones-modal-contenido { padding: 26px 22px 22px; border-radius: 14px; }
+  .consideraciones-modal-titulo { font-size: 1.25rem; margin-bottom: 12px; }
+  .consideraciones-lista-modal { font-size: 0.875rem; }
+}
+
+
+/* ============================================
+   LINEA DE ESTADO + NOTA DE CAMAS (Espacios)
+   ============================================ */
+.alojamiento-estado-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-top: 16px;
+  background: var(--color-arena);
+  border: 1px solid var(--color-arena-dark);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+.alojamiento-estado-label {
+  font-weight: 700;
+  color: var(--color-bosque);
+}
+.alojamiento-estado-luz {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #888;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+.alojamiento-estado-luz.disponible {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e, 0 0 14px rgba(34, 197, 94, 0.5);
+}
+.alojamiento-estado-luz.mantencion {
+  background: #eab308;
+  box-shadow: 0 0 8px #eab308, 0 0 14px rgba(234, 179, 8, 0.5);
+}
+.alojamiento-estado-luz.reservado {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444, 0 0 14px rgba(239, 68, 68, 0.5);
+}
+.alojamiento-estado-texto {
+  font-weight: 600;
+  color: var(--color-bosque);
+}
+
+.alojamiento-camas-nota {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--color-texto-muted);
+  font-style: italic;
+}
+.alojamiento-camas-nota a {
+  color: var(--color-bosque);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.alojamiento-camas-nota a:hover { color: var(--color-oro); }
+
+
+/* ============================================
+   RESPONSIVE - Cards de alojamiento (móvil)
+   ============================================ */
+@media (max-width: 700px) {
+  .alojamiento-body { padding: 24px 20px; }
+  .alojamiento-nombre { font-size: 1.5rem; }
+  .alojamiento-descripcion { font-size: 0.95rem; }
+  .alojamiento-detalles {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px 12px;
+    gap: 10px;
+  }
+  .alojamiento-detalle-icon { width: 28px; height: 28px; }
+  .alojamiento-detalle-label { font-size: 0.65rem; }
+  .alojamiento-detalle-valor { font-size: 0.875rem; }
+  .precios-tabla th, .precios-tabla td {
+    padding: 6px 4px;
+    font-size: 0.8rem;
+  }
+  .precios-tabla th { font-size: 0.7rem; }
+}
+
+@media (max-width: 420px) {
+  .alojamiento-body { padding: 20px 16px; }
+  .alojamiento-nombre { font-size: 1.35rem; }
+  .alojamiento-detalles { padding: 12px 10px; }
+  .precios-tabla th, .precios-tabla td { font-size: 0.75rem; padding: 5px 2px; }
+  .alojamiento-estado-line { font-size: 0.9rem; padding: 8px 12px; }
+}
+
+
+/* ============================================
+   RESPONSIVE - Encantos (cards "Ver detalles")
+   ============================================ */
+@media (max-width: 700px) {
+  .encanto-card { padding: 26px 20px; }
+  .encanto-icon { width: 56px; height: 56px; margin-bottom: 14px; }
+  .encanto-icon svg { width: 26px; height: 26px; }
+  .encanto-title { font-size: 1.125rem; margin-bottom: 6px; }
+  .encanto-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .encanto-cta { margin-top: 14px; }
+}
+
+@media (max-width: 420px) {
+  .encanto-card { padding: 22px 16px; }
+  .encanto-title { font-size: 1.05rem; }
+  .encanto-desc { font-size: 0.85rem; }
 }

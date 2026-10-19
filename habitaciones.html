@@ -21,8 +21,6 @@
 <a href="#inicio" class="skip-link">Saltar al contenido</a>
 <div data-include="partials/header.html"></div>
 
-<div data-include="partials/info-acceso.html"></div>
-
 <main id="inicio">
   <section class="alojamiento-hero">
     <span class="section-eyebrow">✦ Habitaciones ✦</span>
@@ -37,12 +35,14 @@
         <div class="alojamiento-card-grid">
           <div class="alojamiento-gallery">
             <img class="alojamiento-gallery-main" src="fotos-web/habitacion-paula/img-01.webp" alt="Habitación Paula" />
-            <div class="alojamiento-thumbs"></div>
+            <div class="alojamiento-thumbs">
+              <img class="alojamiento-thumb active" src="fotos-web/habitacion-paula/img-01.webp" data-src="fotos-web/habitacion-paula/img-01.webp" alt="Habitación Paula 1" />
+            </div>
           </div>
           <div class="alojamiento-body">
             <span class="alojamiento-tipo">Habitación</span>
             <h2 class="alojamiento-nombre">Paula</h2>
-            <p class="alojamiento-descripcion">Habitacion intima con detalles en madera nativa, bano exclusivo y hermosa vista al mar. Ideal para parejas que buscan tranquilidad y privacidad en un entorno magico de bosque y costa.</p>
+            <p class="alojamiento-descripcion">Habitación íntima con detalles en madera nativa, baño exclusivo y hermosa vista al mar. Ideal para parejas que buscan tranquilidad y privacidad en un entorno mágico de bosque y costa.</p>
             <div class="alojamiento-detalles">
               <div class="alojamiento-detalle">
                 <div class="alojamiento-detalle-icon">
@@ -58,15 +58,30 @@
                 <div class="alojamiento-detalle-label">Capacidad</div>
                 <div class="alojamiento-detalle-valor">2 personas</div>
               </div>
-              <div class="alojamiento-detalle">
-                <div class="alojamiento-detalle-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                </div>
-                <div class="alojamiento-detalle-valor">$XX.XXX / noche</div>
-              </div>
             </div>
-
-            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="data-alojamiento="data-alojamiento="1""">
+            <p class="alojamiento-camas-nota">Tamaño y tipo de cama: <a href="https://wa.me/56991924089?text=Hola%20CasaCuento%2C%20me%20interesa%20la%20habitaci%C3%B3n%20Paula%20%C2%BFqu%C3%A9%20tama%C3%B1o%20de%20cama%20tiene%3F" target="_blank" rel="noopener">consultar por WhatsApp</a>.</p>
+            <div class="alojamiento-estado-line" data-espacio="Paula">
+              <span class="alojamiento-estado-label">Estado:</span>
+              <span class="alojamiento-estado-luz" data-estado-luz></span>
+              <span class="alojamiento-estado-texto" data-estado-texto>—</span>
+            </div>
+            <div class="precios-card">
+              <div class="precios-titulo">Valores por noche</div>
+              <table class="precios-tabla">
+                <thead>
+                  <tr><th>1 Noche</th><th>2 Noches</th><th>3 Noches</th><th>+3 Noches</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$ 98.000</td>
+                    <td>$ 80.000</td>
+                    <td>$ 75.000</td>
+                    <td><strong>A Cotizar</strong> via WhatsApp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="Habitación Paula">
               <h3 class="alojamiento-form-title">Consultar disponibilidad</h3>
               <div class="form-row">
                 <div class="form-group">
@@ -84,37 +99,17 @@
               </div>
               <div class="alojamiento-form-acciones">
                 <button type="submit" class="btn btn-primary">Consultar por WhatsApp</button>
-                <div class="estado-card" data-espacio="Paula">
-          <div class="estado-badge" data-estado-badge>...</div>
-          <div class="estado-label">Disponibilidad</div>
-          </div>
-<div class="precios-card">
-          <div class="precios-titulo">Valores por noche</div>
-          <table class="precios-tabla">
-            <thead>
-              <tr><th>1 Noche</th><th>2 Noches</th><th>3 Noches</th><th>+3 Noches</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$ 98.000</td>
-                <td>$ 80.000</td>
-                <td>$ 75.000</td>
-                <td><strong>A Cotizar</strong> via WhatsApp</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-<div class="booking-dropdown" data-sitio="dropdown">
-          <button type="button" class="btn btn-bosque btn-bosque-dropdown" aria-haspopup="true" aria-expanded="false">
-            Ver sitios de alianza
-            <span class="caret">▾</span>
-          </button>
-          <ul class="booking-dropdown-menu" role="menu">
-            <li><a role="menuitem" href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener">Booking.com</a></li>
-            <li><a role="menuitem" href="https://www.expedia.com/Hotel-Search?destination=Refugio+CasaCuento" target="_blank" rel="noopener">Expedia</a></li>
-            <li><a role="menuitem" href="https://www.airbnb.com/s/Refugio-CasaCuento" target="_blank" rel="noopener">Airbnb</a></li>
-          </ul>
-        </div>
+                <div class="booking-dropdown" data-sitio="dropdown">
+                  <button type="button" class="btn btn-bosque btn-bosque-dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ver sitios de alianza
+                    <span class="caret">▾</span>
+                  </button>
+                  <ul class="booking-dropdown-menu" role="menu">
+                    <li><a role="menuitem" href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener">Booking.com</a></li>
+                    <li><a role="menuitem" href="https://www.expedia.com/Hotel-Search?destination=Refugio+CasaCuento" target="_blank" rel="noopener">Expedia</a></li>
+                    <li><a role="menuitem" href="https://www.airbnb.com/s/Refugio-CasaCuento" target="_blank" rel="noopener">Airbnb</a></li>
+                  </ul>
+                </div>
               </div>
             </form>
           </div>
@@ -133,7 +128,7 @@
           <div class="alojamiento-body">
             <span class="alojamiento-tipo">Habitación</span>
             <h2 class="alojamiento-nombre">Unicornio</h2>
-            <p class="alojamiento-descripcion">Habitacion especial con detalles unicos que inspiran su nombre: bano compartido, decoracion encantada y vista costera al mar Pacifico. Para quien aprecia el diseno contemporaneo en un entorno natural.</p>
+            <p class="alojamiento-descripcion">Habitación especial con detalles únicos que inspiran su nombre: baño compartido, decoración encantada y vista costera al mar Pacífico. Para quien aprecia el diseño contemporáneo en un entorno natural.</p>
             <div class="alojamiento-detalles">
               <div class="alojamiento-detalle">
                 <div class="alojamiento-detalle-icon">
@@ -149,15 +144,30 @@
                 <div class="alojamiento-detalle-label">Capacidad</div>
                 <div class="alojamiento-detalle-valor">2 personas</div>
               </div>
-              <div class="alojamiento-detalle">
-                <div class="alojamiento-detalle-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                </div>
-                <div class="alojamiento-detalle-valor">$XX.XXX / noche</div>
-              </div>
             </div>
-
-            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="data-alojamiento="data-alojamiento="Habitación Unicornio""">
+            <p class="alojamiento-camas-nota">Tamaño y tipo de cama: <a href="https://wa.me/56991924089?text=Hola%20CasaCuento%2C%20me%20interesa%20la%20habitaci%C3%B3n%20Unicornio%20%C2%BFqu%C3%A9%20tama%C3%B1o%20de%20cama%20tiene%3F" target="_blank" rel="noopener">consultar por WhatsApp</a>.</p>
+            <div class="alojamiento-estado-line" data-espacio="Unicornio">
+              <span class="alojamiento-estado-label">Estado:</span>
+              <span class="alojamiento-estado-luz" data-estado-luz></span>
+              <span class="alojamiento-estado-texto" data-estado-texto>—</span>
+            </div>
+            <div class="precios-card">
+              <div class="precios-titulo">Valores por noche</div>
+              <table class="precios-tabla">
+                <thead>
+                  <tr><th>1 Noche</th><th>2 Noches</th><th>3 Noches</th><th>+3 Noches</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$ 98.000</td>
+                    <td>$ 80.000</td>
+                    <td>$ 75.000</td>
+                    <td><strong>A Cotizar</strong> via WhatsApp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <form class="alojamiento-form" data-alojamiento-form data-alojamiento="Habitación Unicornio">
               <h3 class="alojamiento-form-title">Consultar disponibilidad</h3>
               <div class="form-row">
                 <div class="form-group">
@@ -175,37 +185,17 @@
               </div>
               <div class="alojamiento-form-acciones">
                 <button type="submit" class="btn btn-primary">Consultar por WhatsApp</button>
-                <div class="estado-card" data-espacio="Paula">
-          <div class="estado-badge" data-estado-badge>...</div>
-          <div class="estado-label">Disponibilidad</div>
-          </div>
-<div class="precios-card">
-          <div class="precios-titulo">Valores por noche</div>
-          <table class="precios-tabla">
-            <thead>
-              <tr><th>1 Noche</th><th>2 Noches</th><th>3 Noches</th><th>+3 Noches</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$ 98.000</td>
-                <td>$ 80.000</td>
-                <td>$ 75.000</td>
-                <td><strong>A Cotizar</strong> via WhatsApp</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-<div class="booking-dropdown" data-sitio="dropdown">
-          <button type="button" class="btn btn-bosque btn-bosque-dropdown" aria-haspopup="true" aria-expanded="false">
-            Ver sitios de alianza
-            <span class="caret">▾</span>
-          </button>
-          <ul class="booking-dropdown-menu" role="menu">
-            <li><a role="menuitem" href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener">Booking.com</a></li>
-            <li><a role="menuitem" href="https://www.expedia.com/Hotel-Search?destination=Refugio+CasaCuento" target="_blank" rel="noopener">Expedia</a></li>
-            <li><a role="menuitem" href="https://www.airbnb.com/s/Refugio-CasaCuento" target="_blank" rel="noopener">Airbnb</a></li>
-          </ul>
-        </div>
+                <div class="booking-dropdown" data-sitio="dropdown">
+                  <button type="button" class="btn btn-bosque btn-bosque-dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ver sitios de alianza
+                    <span class="caret">▾</span>
+                  </button>
+                  <ul class="booking-dropdown-menu" role="menu">
+                    <li><a role="menuitem" href="https://www.booking.com/hotel/cl/casa-cuento.es.html" target="_blank" rel="noopener">Booking.com</a></li>
+                    <li><a role="menuitem" href="https://www.expedia.com/Hotel-Search?destination=Refugio+CasaCuento" target="_blank" rel="noopener">Expedia</a></li>
+                    <li><a role="menuitem" href="https://www.airbnb.com/s/Refugio-CasaCuento" target="_blank" rel="noopener">Airbnb</a></li>
+                  </ul>
+                </div>
               </div>
             </form>
           </div>

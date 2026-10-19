@@ -392,11 +392,11 @@
       eyebrow: 'Servicio · Naturaleza',
       title: 'Piscina y Cascada Encantada',
       subtitle: 'Agua cristalina rodeada de naturaleza nativa, con cascada incorporada.',
-      description: 'Nuestra piscina al aire libre es el corazon del lugar. Agua cristalina rodeada de areas verdes, con espacio para relajarse bajo el sol de la costa. En verano se convierte en el punto de encuentro familiar; en otono e invierno, en un rincon tranquilo donde leer junto al agua.',
+      description: 'Nuestra piscina al aire libre es el corazón del lugar. Agua cristalina rodeada de áreas verdes, con espacio para relajarse bajo el sol de la costa. En verano se convierte en el punto de encuentro familiar; en otoño e invierno, en un rincón tranquilo donde leer junto al agua.',
       features: [
-        { icon: '\u{1F4A7}', title: 'Cascada natural', text: 'Cascada integrada al diseno del jardin, rodeada de piedras nativas y vegetacion.' },
-        { icon: '\u{1F33F}', title: 'Entorno verde', text: 'Areas verdes con arboles nativos que dan sombra y privacidad natural.' },
-        { icon: '\u{2600}\u{FE0F}', title: 'Todo el ano', text: 'Disponible en verano e invierno, temperada y apta para distintas edades.' }
+        { icon: '\u{1F4A7}', title: 'Cascada natural', text: 'Cascada integrada al diseño del jardín, rodeada de piedras nativas y vegetación.' },
+        { icon: '\u{1F33F}', title: 'Entorno verde', text: 'Áreas verdes con árboles nativos que dan sombra y privacidad natural.' },
+        { icon: '\u{2600}\u{FE0F}', title: 'Todo el año', text: 'Disponible en verano e invierno, temperada y apta para distintas edades.' }
       ],
       gallery: [
         'fotos-web/galeria/piscina-01.webp',
@@ -407,13 +407,13 @@
       whatsappText: 'Hola CasaCuento, me interesa la piscina'
     },
     desayuno: {
-      eyebrow: 'Servicio · Manana',
+      eyebrow: 'Servicio · Mañana',
       title: 'Desayuno de Cuento',
-      subtitle: 'Pan recien hecho, cafe de la zona y frutas frescas cada manana.',
-      description: 'Cada manana servimos un desayuno casero con productos frescos y locales: pan recien hecho, cafe de la zona, frutas de temporada y mermeladas artesanales. Es la forma mas encantadora de empezar el dia antes de salir a descubrir Mantagua.',
+      subtitle: 'Pan recién hecho, café de la zona y frutas frescas cada mañana.',
+      description: 'Cada mañana servimos un desayuno casero con productos frescos y locales: pan recién hecho, café de la zona, frutas de temporada y mermeladas artesanales. Es la forma más encantadora de empezar el día antes de salir a descubrir Mantagua.',
       features: [
-        { icon: '\u{1F35E}', title: 'Pan artesanal', text: 'Pan recien hecho cada manana, horneado en casa con recetas tradicionales.' },
-        { icon: '\u{2615}', title: 'Cafe de la zona', text: 'Cafe de productores locales de la V Region, tostado suave para conservar su aroma.' },
+        { icon: '\u{1F35E}', title: 'Pan artesanal', text: 'Pan recién hecho cada mañana, horneado en casa con recetas tradicionales.' },
+        { icon: '\u{2615}', title: 'Café de la zona', text: 'Café de productores locales de la V Región, tostado suave para conservar su aroma.' },
         { icon: '\u{1F36F}', title: 'Mermeladas y frutas', text: 'Mermeladas caseras y frutas de temporada de la zona.' }
       ],
       gallery: [
@@ -426,13 +426,13 @@
     },
     bosque: {
       eyebrow: 'Servicio · Naturaleza',
-      title: 'Arboles Magicos',
-      subtitle: 'El bosque nativo de Mantagua abraza cada rincon del hostal.',
-      description: 'Senderos para caminar, arboles centenarios, pajaros cantores a la manana. Una invitacion a desconectarse del ritmo de la ciudad y reconectar con lo esencial.',
+      title: 'Árboles Mágicos',
+      subtitle: 'El bosque nativo de Mantagua abraza cada rincón del hostal.',
+      description: 'Senderos para caminar, árboles centenarios, pájaros cantores a la mañana. Una invitación a desconectarse del ritmo de la ciudad y reconectar con lo esencial.',
       features: [
-        { icon: '\u{1F332}', title: 'Bosque nativo', text: 'Arboles centenarios que forman un ecosistema protegido y silencioso.' },
-        { icon: '\u{1F97E}', title: 'Senderos', text: 'Caminos peatonales senalizados para recorrer el bosque a tu ritmo.' },
-        { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pajaros y fauna nativa para observar desde los miradores del hostal.' }
+        { icon: '\u{1F332}', title: 'Bosque nativo', text: 'Árboles centenarios que forman un ecosistema protegido y silencioso.' },
+        { icon: '\u{1F97E}', title: 'Senderos', text: 'Caminos peatonales señalizados para recorrer el bosque a tu ritmo.' },
+        { icon: '\u{1F99C}', title: 'Avistamiento', text: 'Pájaros y fauna nativa para observar desde los miradores del hostal.' }
       ],
       gallery: [
         'fotos-web/galeria/arboles-01.webp',
@@ -445,12 +445,12 @@
     habitaciones: {
       eyebrow: 'Servicio · Confort',
       title: 'Habitaciones de Cuento',
-      subtitle: 'Suites de piedra y madera noble, equipadas para el descanso mas profundo.',
-      description: 'Las suites combinan piedra y madera noble. Estan equipadas con ropa de cama premium, calefaccion y todo lo necesario para un descanso profundo. Cada habitacion tiene su propio caracter, inspirado en el bosque que las rodea.',
+      subtitle: 'Suites de piedra y madera noble, equipadas para el descanso más profundo.',
+      description: 'Las suites combinan piedra y madera noble. Están equipadas con ropa de cama premium, calefacción y todo lo necesario para un descanso profundo. Cada habitación tiene su propio carácter, inspirado en el bosque que las rodea.',
       features: [
-        { icon: '\u{1F6CF}\u{FE0F}', title: 'Ropa de cama premium', text: 'Sabanas de algodon de alto gramaje y almohadas hipoalergenicas.' },
-        { icon: '\u{1F525}', title: 'Calefaccion', text: 'Calefaccion central para que el invierno sea calido y silencioso.' },
-        { icon: '\u{1F319}', title: 'Privacidad', text: 'Cada suite esta pensada para ofrecer silencio y descanso sin interrupciones.' }
+        { icon: '\u{1F6CF}\u{FE0F}', title: 'Ropa de cama premium', text: 'Sábanas de algodón de alto gramaje y almohadas hipoalergénicas.' },
+        { icon: '\u{1F525}', title: 'Calefacción', text: 'Calefacción central para que el invierno sea cálido y silencioso.' },
+        { icon: '\u{1F319}', title: 'Privacidad', text: 'Cada suite está pensada para ofrecer silencio y descanso sin interrupciones.' }
       ],
       gallery: [
         'fotos-web/galeria/habitacion-paula.webp',
@@ -464,10 +464,10 @@
       eyebrow: 'Servicio · Calor',
       title: 'Fuego y Calor',
       subtitle: 'Chimeneas que encienden las noches y crean momentos memorables.',
-      description: 'Las chimeneas son el alma de las noches en CasaCuento. Enciendes el fuego, sirves un vino, y el tiempo se detiene. Calor, conversacion, estrellas a traves de los ventanales. Es la experiencia que nuestros huespedes mas recuerdan.',
+      description: 'Las chimeneas son el alma de las noches en CasaCuento. Enciendes el fuego, sirves un vino, y el tiempo se detiene. Calor, conversación, estrellas a través de los ventanales. Es la experiencia que nuestros huéspedes más recuerdan.',
       features: [
-        { icon: '\u{1F525}', title: 'Chimenea encendida', text: 'Lena seca y servicio de encendido incluido para todas las noches frias.' },
-        { icon: '\u{1F377}', title: 'Espacios para compartir', text: 'Salones con chimenea para conversar, leer o tomar algo despues de cenar.' },
+        { icon: '\u{1F525}', title: 'Chimenea encendida', text: 'Leña seca y servicio de encendido incluido para todas las noches frías.' },
+        { icon: '\u{1F377}', title: 'Espacios para compartir', text: 'Salones con chimenea para conversar, leer o tomar algo después de cenar.' },
         { icon: '\u{1F30C}', title: 'Cielos estrellados', text: 'En las noches despejadas, el cielo de Mantagua regala un manto de estrellas.' }
       ],
       gallery: [
@@ -479,13 +479,13 @@
       whatsappText: 'Hola CasaCuento, me interesan las chimeneas'
     },
     eventos: {
-      eyebrow: 'Servicio · Celebracion',
+      eyebrow: 'Servicio · Celebración',
       title: 'Eventos de Maravillas',
-      subtitle: 'Matrimonios, cumpleanos y eventos corporativos en un entorno de cuento.',
-      description: 'Matrimonios, cumpleanos, aniversarios y eventos corporativos en un entorno de cuento. Coordinacion personalizada con nuestro equipo para que cada celebracion sea unica e inolvidable. La piscina, el bosque y la chimenea crean el marco perfecto para tus momentos mas importantes.',
+      subtitle: 'Matrimonios, cumpleaños y eventos corporativos en un entorno de cuento.',
+      description: 'Matrimonios, cumpleaños, aniversarios y eventos corporativos en un entorno de cuento. Coordinación personalizada con nuestro equipo para que cada celebración sea única e inolvidable. La piscina, el bosque y la chimenea crean el marco perfecto para tus momentos más importantes.',
       features: [
         { icon: '\u{1F48D}', title: 'Matrimonios', text: 'Ceremonias al aire libre con vista al bosque y la piscina como marco.' },
-        { icon: '\u{1F382}', title: 'Cumpleanos', text: 'Celebraciones intimas o grandes, con piscina privada disponible.' },
+        { icon: '\u{1F382}', title: 'Cumpleaños', text: 'Celebraciones íntimas o grandes, con piscina privada disponible.' },
         { icon: '\u{1F4BC}', title: 'Eventos corporativos', text: 'Retiros de equipo, reuniones ejecutivas y lanzamientos en un lugar inspirador.' }
       ],
       gallery: [],
@@ -610,10 +610,10 @@
   // MODAL DE CONTACTO (Combinada)
   // ============================================
   const initContactoModalCombinada = () => {
-    // IMPORTANTE: "Contacto" del menu (data-open-contacto) ahora navega a
-    // contacto.html (redes sociales), NO abre este modal. Solo el boton
+    // IMPORTANTE: "Contacto" del menú (data-open-contacto) ahora navega a
+    // contacto.html (redes sociales), NO abre este modal. Solo el botón
     // "Contactar" del header (id="contactoBtnCombinada") abre este modal
-    // (es el formulario de contacto real, distinto del menu de redes).
+    // (es el formulario de contacto real, distinto del menú de redes).
     const btn = document.getElementById('contactoBtnCombinada');
     const modal = document.getElementById('contactoModalCombinada');
     const close = document.getElementById('contactoModalCloseCombinada');
@@ -749,7 +749,7 @@
     });
   };
 
-(  const ready = window\.__includesReady) || Promise.resolve();
+const ready = window.__includesReady || Promise.resolve();
 
   ready.then(() => {
     setYear();
@@ -767,7 +767,6 @@
     initReservarButton();
     initBookingDropdowns();
     initEstadosDisponibilidad();
-    initConsideracionesModal();
   });
 })();
 
@@ -786,7 +785,6 @@ const initBookingDropdowns = () => {
       trigger.setAttribute('aria-expanded', String(isOpen));
     });
   });
-  // Cerrar al hacer click fuera
   document.addEventListener('click', e => {
     document.querySelectorAll('.booking-dropdown.open').forEach(btn => {
       if (!btn.contains(e.target)) {
@@ -800,8 +798,8 @@ const initBookingDropdowns = () => {
 
 /* === ESTADOS DE DISPONIBILIDAD: lee data/availability.json y actualiza cada card === */
 const initEstadosDisponibilidad = async () => {
-  const cards = document.querySelectorAll('.estado-card');
-  if (cards.length === 0) return;
+  const lines = document.querySelectorAll('.alojamiento-estado-line[data-espacio]');
+  if (lines.length === 0) return;
   let data = { espacios: {} };
   try {
     const res = await fetch('data/availability.json', { cache: 'no-store' });
@@ -809,44 +807,21 @@ const initEstadosDisponibilidad = async () => {
   } catch (err) {
     console.warn('No se pudo cargar availability.json:', err);
   }
-  cards.forEach(card => {
-    const nombre = card.dataset.espacio;
-    const badge = card.querySelector('[data-estado-badge]');
-    if (!nombre || !badge) return;
-    const estado = (data.espacios && data.espacios[nombre]) || 'desconocido';
-    const mapa = {
-      'disponible':   { texto: 'Disponible',   color: '#2E8B57' },
-      'reservado':    { texto: 'Reservado',    color: '#C0392B' },
-      'mantenimiento':{ texto: 'Mantenimiento', color: '#B8860B' },
-    };
-    const cfg = mapa[estado] || { texto: 'Sin info', color: '#888' };
-    badge.textContent = cfg.texto;
-    badge.setAttribute('data-estado', estado);
-    badge.style.background = cfg.color;
+  const mapa = {
+    'Disponible':    { texto: 'Disponible',   clase: 'disponible' },
+    'Reservado':     { texto: 'Reservado',    clase: 'reservado' },
+    'Mantenimiento': { texto: 'Mantención',   clase: 'mantencion' },
+  };
+  lines.forEach(line => {
+    const nombre = line.dataset.espacio;
+    const luz = line.querySelector('[data-estado-luz]');
+    const texto = line.querySelector('[data-estado-texto]');
+    if (!nombre || !luz || !texto) return;
+    const estadoCrudo = data.espacios && data.espacios[nombre];
+    const cfg = mapa[estadoCrudo] || { texto: 'Sin información', clase: '' };
+    texto.textContent = cfg.texto;
+    luz.classList.remove('disponible', 'mantencion', 'reservado');
+    if (cfg.clase) luz.classList.add(cfg.clase);
+    line.setAttribute('data-estado', (estadoCrudo || '').toLowerCase());
   });
-};
-
-/* === MODAL FLOTANTE: Consideraciones ===
-   Muestra el modal en la landing (index.html) salvo que el usuario
-   haya marcado "no volver a mostrar" (localStorage). */
-const initConsideracionesModal = () => {
-  const root = document.querySelector('[data-consideraciones]');
-  if (!root) return;
-  if (localStorage.getItem('consideraciones_dismissed') === '1') {
-    root.classList.add('oculta');
-    return;
-  }
-  // Mostrarlo (ya esta visible por CSS, pero por si lo escondimos antes)
-  root.classList.remove('oculta');
-  // Boton cerrar (X)
-  const closeBtn = root.querySelector('[data-consideraciones-cerrar]');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      const noMostrar = root.querySelector('[data-consideraciones-nomostrar]');
-      if (noMostrar && noMostrar.checked) {
-        localStorage.setItem('consideraciones_dismissed', '1');
-      }
-      root.classList.add('oculta');
-    });
-  }
 };
