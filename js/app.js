@@ -686,63 +686,58 @@
     const cerrarFlotante = document.querySelector('[data-consideraciones-cerrar]');
     const noMostrarFlotante = document.querySelector('[data-consideraciones-nomostrar]');
 
-    // 1. Mostrar modal flotante SOLO en el index
+    const closeModal = () => {
+      if (!modal) return;
+      modal.classList.remove('visible');
+      document.body.style.overflow = '';
+    };
+
+    // 1. Mensaje flotante: mostrar tras 1.5s solo en el index
     const isIndex = window.location.pathname.endsWith('index.html') ||
                     window.location.pathname === '/' ||
                     window.location.pathname.endsWith('/RefugioCasaCuento/') ||
                     window.location.pathname === '';
     const isOculto = localStorage.getItem(STORAGE_KEY) === 'true';
     if (flotante && isIndex && !isOculto) {
-      setTimeout(() => flotante.classList.add('visible'), 1500);
+      setTimeout(() => flotante.classList.remove('oculta'), 1500);
     }
     if (cerrarFlotante) {
       cerrarFlotante.addEventListener('click', () => {
         if (noMostrarFlotante && noMostrarFlotante.checked) {
           localStorage.setItem(STORAGE_KEY, 'true');
         }
-        flotante.classList.remove('visible');
+        flotante.classList.add('oculta');
       });
     }
 
-    // 2. Mostrar modal central al hacer reserva en páginas de alojamientos
+    // 2. Modal: handlers de cierre vinculados una sola vez
+    if (modalCerrar) {
+      modalCerrar.addEventListener('click', closeModal);
+    }
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // 3. Mostrar modal al enviar formulario de reserva
     const formsReserva = document.querySelectorAll('[data-alojamiento-form]');
     formsReserva.forEach(form => {
       form.addEventListener('submit', (e) => {
-        if (modal) {
-          e.preventDefault();
-          if (localStorage.getItem(STORAGE_KEY) === 'true') {
-            // Si ya ocultó antes, no mostrar modal, dejar que el form haga su flujo
-            modalAceptar.dataset.skip = '1';
-            modalAceptar.click();
-            return;
-          }
-          modal.classList.add('visible');
-          document.body.style.overflow = 'hidden';
-
-          // Click en "Entendido, continuar"
-          if (modalAceptar) {
-            modalAceptar.onclick = () => {
-              if (modalNomostrar && modalNomostrar.checked) {
-                localStorage.setItem(STORAGE_KEY, 'true');
-              }
-              modal.classList.remove('visible');
-              document.body.style.overflow = '';
-              // Enviar el formulario
-              form.requestSubmit();
-            };
-          }
-          if (modalCerrar) {
-            modalCerrar.onclick = () => {
-              modal.classList.remove('visible');
-              document.body.style.overflow = '';
-            };
-          }
-          // Click fuera del modal para cerrar
-          modal.onclick = (e) => {
-            if (e.target === modal) {
-              modal.classList.remove('visible');
-              document.body.style.overflow = '';
+        if (!modal) return;
+        // Si el usuario ya acepto antes, dejamos pasar al handler de WhatsApp
+        if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        modal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+        if (modalAceptar) {
+          modalAceptar.onclick = () => {
+            if (modalNomostrar && modalNomostrar.checked) {
+              localStorage.setItem(STORAGE_KEY, 'true');
             }
+            closeModal();
+            form.requestSubmit();
           };
         }
       });
@@ -756,6 +751,7 @@ const ready = window.__includesReady || Promise.resolve();
     initMultiLangLogo();
     initHeader();
     initLangMenu();
+    initConsideraciones();
     initAlojamientoForms();
     initChatbot();
     initGalleries();
@@ -763,7 +759,6 @@ const ready = window.__includesReady || Promise.resolve();
     initContactoModalCombinada();
     initReveal();
     initSmoothScroll();
-    initConsideraciones();
     initReservarButton();
     initBookingDropdowns();
     initEstadosDisponibilidad();
